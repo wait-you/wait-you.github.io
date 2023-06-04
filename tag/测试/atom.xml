@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
-    <title>Hexo • Posts by &#34;测试&#34; tag</title>
-    <link href="http://example.com" />
+    <id>https://wait-you.github.io</id>
+    <title>玖忆 • Posts by &#34;测试&#34; tag</title>
+    <link href="https://wait-you.github.io" />
     <updated>2023-06-01T04:37:34.000Z</updated>
     <category term="测试" />
     <entry>
-        <id>http://example.com/2023/06/01/%E6%B5%8B%E8%AF%95%E6%A0%87%E9%A2%98/</id>
+        <id>https://wait-you.github.io/2023/06/01/%E6%B5%8B%E8%AF%95%E6%A0%87%E9%A2%98/</id>
         <title>测试标题</title>
-        <link rel="alternate" href="http://example.com/2023/06/01/%E6%B5%8B%E8%AF%95%E6%A0%87%E9%A2%98/"/>
+        <link rel="alternate" href="https://wait-you.github.io/2023/06/01/%E6%B5%8B%E8%AF%95%E6%A0%87%E9%A2%98/"/>
         <content type="html">&lt;h1 id=&#34;这是一个测试&#34;&gt;&lt;a href=&#34;#这是一个测试&#34; class=&#34;headerlink&#34; title=&#34;这是一个测试&#34;&gt;&lt;/a&gt;这是一个测试&lt;/h1&gt;&lt;h2 id=&#34;二级标题&#34;&gt;&lt;a href=&#34;#二级标题&#34; class=&#34;headerlink&#34; title=&#34;二级标题&#34;&gt;&lt;/a&gt;二级标题&lt;/h2&gt;&lt;h3 id=&#34;三级标题&#34;&gt;&lt;a href=&#34;#三级标题&#34; class=&#34;headerlink&#34; title=&#34;三级标题&#34;&gt;&lt;/a&gt;三级标题&lt;/h3&gt;&lt;p&gt;正文&lt;/p&gt;
 </content>
         <category term="测试" />
