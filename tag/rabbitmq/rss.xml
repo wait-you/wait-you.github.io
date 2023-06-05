@@ -1,15 +1,20 @@
 <?xml version="1.0"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://wait-you.github.io</id>
-    <title>玖忆</title>
-    <link href="https://wait-you.github.io" />
-    <updated>2023-06-01T20:37:34.000Z</updated>
-    <category term="RabbitMQ" />
-    <entry>
-        <id>https://wait-you.github.io/2023/06/02/RabbitMQ/</id>
-        <title>RabbitMQ</title>
-        <link rel="alternate" href="https://wait-you.github.io/2023/06/02/RabbitMQ/"/>
-        <content type="html">&lt;h1 id=&#34;1-消息中间件概述&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-消息中间件概述&#34;&gt;#&lt;/a&gt; 1. 消息中间件概述&lt;/h1&gt;
+<rss version="2.0">
+    <channel>
+        <title>玖忆 • Posts by &#34;rabbitmq&#34; tag</title>
+        <link>https://wait-you.github.io</link>
+        <description>我本微末凡尘、可也心向天空</description>
+        <language>zh-CN</language>
+        <pubDate>Fri, 02 Jun 2023 04:37:34 +0800</pubDate>
+        <lastBuildDate>Fri, 02 Jun 2023 04:37:34 +0800</lastBuildDate>
+        <category>RabbitMQ</category>
+        <item>
+            <guid isPermalink="true">https://wait-you.github.io/2023/06/02/RabbitMQ/</guid>
+            <title>RabbitMQ</title>
+            <link>https://wait-you.github.io/2023/06/02/RabbitMQ/</link>
+            <category>RabbitMQ</category>
+            <pubDate>Fri, 02 Jun 2023 04:37:34 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;1-消息中间件概述&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-消息中间件概述&#34;&gt;#&lt;/a&gt; 1. 消息中间件概述&lt;/h1&gt;
 &lt;h2 id=&#34;11-什么是消息中间件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#11-什么是消息中间件&#34;&gt;#&lt;/a&gt; 1.1. 什么是消息中间件&lt;/h2&gt;
 &lt;p&gt;MQ 全称为 Message Queue，消息队列是应用程序和应用程序之间的通信方法。&lt;/p&gt;
 &lt;ul&gt;
@@ -602,35 +607,7 @@
                      data-src=&#34;http://tuchuang.wenhe9.cn/1556074827222.png&#34;
                       alt=&#34;1556074827222&#34;
                 &gt;&lt;/p&gt;
-</content>
-        <category term="RabbitMQ" />
-        <updated>2023-06-01T20:37:34.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://wait-you.github.io/2023/06/01/hello-world-1/</id>
-        <title>hello world</title>
-        <link rel="alternate" href="https://wait-you.github.io/2023/06/01/hello-world-1/"/>
-        <content type="html"></content>
-        <updated>2023-06-01T06:54:29.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://wait-you.github.io/2023/06/01/hello-world/</id>
-        <title>Hello World</title>
-        <link rel="alternate" href="https://wait-you.github.io/2023/06/01/hello-world/"/>
-        <content type="html">&lt;p&gt;Welcome to &lt;a href=&#34;https://hexo.io/&#34;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&#34;https://hexo.io/docs/&#34;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&#34;https://hexo.io/docs/troubleshooting.html&#34;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&#34;https://github.com/hexojs/hexo/issues&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;Quick-Start&#34;&gt;&lt;a href=&#34;#Quick-Start&#34; class=&#34;headerlink&#34; title=&#34;Quick Start&#34;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&#34;Create-a-new-post&#34;&gt;&lt;a href=&#34;#Create-a-new-post&#34; class=&#34;headerlink&#34; title=&#34;Create a new post&#34;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo new &lt;span class=&#34;string&#34;&gt;&amp;quot;My New Post&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;More info: &lt;a href=&#34;https://hexo.io/docs/writing.html&#34;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;Run-server&#34;&gt;&lt;a href=&#34;#Run-server&#34; class=&#34;headerlink&#34; title=&#34;Run server&#34;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;More info: &lt;a href=&#34;https://hexo.io/docs/server.html&#34;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;Generate-static-files&#34;&gt;&lt;a href=&#34;#Generate-static-files&#34; class=&#34;headerlink&#34; title=&#34;Generate static files&#34;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;More info: &lt;a href=&#34;https://hexo.io/docs/generating.html&#34;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;Deploy-to-remote-sites&#34;&gt;&lt;a href=&#34;#Deploy-to-remote-sites&#34; class=&#34;headerlink&#34; title=&#34;Deploy to remote sites&#34;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;More info: &lt;a href=&#34;https://hexo.io/docs/one-command-deployment.html&#34;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-        <updated>2023-06-01T04:29:14.072Z</updated>
-    </entry>
-</feed>
+ ]]></description>
+        </item>
+    </channel>
+</rss>
