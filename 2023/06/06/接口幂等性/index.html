@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="玖忆;文鹤;博客">
+    
+    <meta name="author" content="meteor">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://wait-you.github.io/2023/06/06/接口幂等性/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="# 接口幂等性 # 什么是幂等性 接口幂等性就是用户对于同一操作发起的一次请求或者多次请求的结果是一致的，不会因为多次点击而产生副作用；比如说支付场景，用户购买了商品支付成功，但是返回结果的时候网络异常，此时钱已经扣了，用户再次点击按钮，此时会进行二次扣款，返回结果成功，用户查询语法发现多扣钱了，流水记录也变成了两条，这就是没有保证接口幂等性 # 哪些情况需要防止 用户多次点击按钮 用户页面回退再">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接口幂等性">
+<meta property="og:url" content="https://wait-you.github.io/2023/06/06/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/index.html">
+<meta property="og:site_name" content="玖忆">
+<meta property="og:description" content="# 接口幂等性 # 什么是幂等性 接口幂等性就是用户对于同一操作发起的一次请求或者多次请求的结果是一致的，不会因为多次点击而产生副作用；比如说支付场景，用户购买了商品支付成功，但是返回结果的时候网络异常，此时钱已经扣了，用户再次点击按钮，此时会进行二次扣款，返回结果成功，用户查询语法发现多扣钱了，流水记录也变成了两条，这就是没有保证接口幂等性 # 哪些情况需要防止 用户多次点击按钮 用户页面回退再">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-06T01:09:49.000Z">
+<meta property="article:modified_time" content="2023-06-05T09:10:25.155Z">
+<meta property="article:author" content="meteor">
+<meta property="article:tag" content="接口幂等性">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/wenhe.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/wenhe.png">
+    <meta name="theme-color" content="#f1404b">
+    <link rel="shortcut icon" href="/images/wenhe.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            接口幂等性 -
+        
+        玖忆
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"wait-you.github.io","root":"/","language":"zh-CN"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"http://tuchuang.wenhe9.cn/default-bg.jpg","skip_dirs":[]}},"colors":{"primary":"#f1404b","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"static","image":{"light":"http://tuchuang.wenhe9.cn/default-bg.jpg","dark":"http://tuchuang.wenhe9.cn/default-bg.jpg"},"title":"玖忆","subtitle":{"text":["我本微末凡尘、可也心向天空"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://gitee.com/du-jinliang","instagram":null,"zhihu":null,"twitter":null,"email":"dujinliang9@163.com"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.4","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    Global.data_config = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                玖忆
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">接口幂等性</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/wenhe.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">meteor</span>
+                            
+                                <span class="author-label">Lv3</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-06-05 17:09:49</span>
+        <span class="mobile">2023-06-05 17:09</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-06-05 01:10:25</span>
+            <span class="mobile">2023-06-05 01:10</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/">接口幂等性</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="接口幂等性"><a class="markdownIt-Anchor" href="#接口幂等性">#</a> 接口幂等性</h1>
+<h2 id="什么是幂等性"><a class="markdownIt-Anchor" href="#什么是幂等性">#</a> 什么是幂等性</h2>
+<p><strong>接口幂等性就是用户对于同一操作发起的一次请求或者多次请求的结果是一致的</strong>，不会因为多次点击而产生副作用；比如说支付场景，用户购买了商品支付成功，但是返回结果的时候网络异常，此时钱已经扣了，用户再次点击按钮，此时会进行二次扣款，返回结果成功，用户查询语法发现多扣钱了，流水记录也变成了两条，这就是没有保证接口幂等性</p>
+<h2 id="哪些情况需要防止"><a class="markdownIt-Anchor" href="#哪些情况需要防止">#</a> 哪些情况需要防止</h2>
+<p>用户多次点击按钮</p>
+<p>用户页面回退再次提交</p>
+<p>微服务互相调用，由于网络问题，导致请求失败，feign 触发重试机制</p>
+<p>其他业务情况</p>
+<h2 id="幂等解决方案将"><a class="markdownIt-Anchor" href="#幂等解决方案将">#</a> 幂等解决方案将</h2>
+<h3 id="token机制"><a class="markdownIt-Anchor" href="#token机制">#</a> token 机制</h3>
+<ol>
+<li>服务端提供了发送 token 的接口，我们在分析业务的时候，哪些业务是存在幂等问题的，就必须在执行业务前，先去获取 token，服务器会把 token 保存都 redis 中</li>
+<li>然后调用业务接口请求时，把 token 携带过去，一般放在请求头部</li>
+<li>服务器判断 token 是否存在 redis 中，存在表示第一次请求，然后删除 token，继续执行业务</li>
+<li>如果 token 不存在 redis 中，就表示是重复操作，直接返回重复标记给 client，这样就保证了业务代码，不被重复执行</li>
+</ol>
+<p>危险性：</p>
+<ol>
+<li>
+<p>先删除 token 还是后删除 token</p>
+<ol>
+<li>先删除可能导致业务确实没有执行，重试还带上之前的 token，由于放重涉及导致请求还是不能执行</li>
+<li>后删除可能导致业务处理成功，但是服务闪退，出现超时，没有删除 token，别人继续重试，导致业务被执行两遍</li>
+<li>我们最好设计为先删除 token，如果业务调用失败，就重新获取 token 再次请求</li>
+</ol>
+</li>
+<li>
+<p>Token 获取、比较和删除必须是原子操作</p>
+<ol>
+<li>
+<p>redis.get (token)、token.equals、redis.del (token)，如果这三个操作不是原子，可能导致高并发下，都 get 到同样的数据，判断都成功，继续业务执行</p>
+</li>
+<li>
+<p>可以在 redis 使用 lua 脚本完成这个操作</p>
+<div class="highlight-container" data-rel="Lua"><figure class="iseeu highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> redis.call(<span class="string">&#x27;get&#x27;</span>, KEYS[<span class="number">1</span>]==ARGV[<span class="number">1</span>])<span class="keyword">then</span> <span class="keyword">return</span> redis.call(<span class="string">&#x27;del&#x27;</span>, KEYS[<span class="number">1</span>])<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">end</span></span><br></pre></td></tr></table></figure></div>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="各种锁机制"><a class="markdownIt-Anchor" href="#各种锁机制">#</a> 各种锁机制</h3>
+<h4 id="数据库悲观锁"><a class="markdownIt-Anchor" href="#数据库悲观锁">#</a> 数据库悲观锁</h4>
+<p>悲观锁使用时一般伴随事务一起使用，数据锁定时间可能会很长，需要根据实际情况选用，另外要注意的是，id 字段一定是主键或者唯一索引，不然很可能造成锁表的结果，处理起来会非常麻烦</p>
+<h4 id="数据库乐观锁"><a class="markdownIt-Anchor" href="#数据库乐观锁">#</a> 数据库乐观锁</h4>
+<p>这种方法适合在更新的场景中</p>
+<p>根据 version 版本，也就是在操作数据库前先获取当前商品的 version 版本号，然后操作的时候带上此 version 号</p>
+<p>乐观锁主要使用于处理读多写少的问题</p>
+<h4 id="业务层分布式锁"><a class="markdownIt-Anchor" href="#业务层分布式锁">#</a> 业务层分布式锁</h4>
+<p>如果多个机器可能在同一时间同时处理相同的数据，比如多台机器定时任务都拿到了相同数据处理，我们就可以加分布式锁，锁定此数据，处理完成后释放锁，获取到锁的必须先判断这个数据是否被处理过</p>
+<h3 id="各种唯一约束"><a class="markdownIt-Anchor" href="#各种唯一约束">#</a> 各种唯一约束</h3>
+<h4 id="数据库唯一约束"><a class="markdownIt-Anchor" href="#数据库唯一约束">#</a> 数据库唯一约束</h4>
+<p>插入数据，应该按照唯一索引进行插入，比如订单号，相同的订单号就不可能有两条记录插入</p>
+<p>这个机制是利用了数据库的主键唯一约束的特性，解决了在 insert 场景时幂等性问题，但主键的要求不能是自增的主键，这样就需要业务生成全局唯一 的主键</p>
+<p>如果是分库分表的场景下，路由规则要保证相同请求下，落地在同一个数据库和同一个表中，要不然数据库主键约束就不其效果了，因为是不同的数据库和表主键不相关</p>
+<h4 id="redis-set防重"><a class="markdownIt-Anchor" href="#redis-set防重">#</a> redis set 防重</h4>
+<p>很多数据需要处理，只能被处理一次，比如我们可以计算数据的 MD5 将其放入 redis 的 set，每次处理数据，先看这个 MD5 是否已经存在，存在就不处理</p>
+<h3 id="防重表"><a class="markdownIt-Anchor" href="#防重表">#</a> 防重表</h3>
+<p>使用订单号 orderNo 作为去重表的唯一索引，把唯一索引插入去重表，在进行业务操作，且他们在同一个事物中，这个保证了重复请求时，因为去重表有唯一约束，导致请求失败，避免了幂等性问题，这里要注意的是，去重表和业务表应该放在同一个库中，这样就保证了在同一个事务中，即使业务操作失败了，也会把去重表的数据回滚 ，这个很好的保证了数据的一致性</p>
+<h3 id="全局请求唯一id"><a class="markdownIt-Anchor" href="#全局请求唯一id">#</a> 全局请求唯一 id</h3>
+<p>调用接口时，生成一个唯一的 id，redis 将数据保存到集合中（去重），存在即处理过</p>
+<p>可与使用 nginx 设置每一个请求的唯一 id</p>
+<p>proxy_set_header X-Rquest-Id $request_id;</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 接口幂等性</li>
+        <li><strong>作者:</strong> meteor</li>
+        <li><strong>创建于:</strong> 2023-06-05 17:09:49</li>
+        
+            <li>
+                <strong>更新于:</strong> 2023-06-05 01:10:25
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://gitee.com/du-jinliang/2023/06/06/接口幂等性/
+        </li>
+        <li>
+            <strong>版权声明:</strong> 本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/">#接口幂等性</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/06/06/%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">领域驱动设计</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/06/06/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">分布式事务</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;评论
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '55bad54a77b7e60ad62d',
+                    clientSecret: '1031c81500c6be06e338087cb7b713f2d0201b46',
+                    repo: 'wait-you.github.io',
+                    owner: 'wait-you',
+                    admin: ['wait-you'],
+                    id: 'comment',
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">接口幂等性</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-text"> 接口幂等性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-text"> 什么是幂等性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E9%9C%80%E8%A6%81%E9%98%B2%E6%AD%A2"><span class="nav-text"> 哪些情况需要防止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%82%E7%AD%89%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%B0%86"><span class="nav-text"> 幂等解决方案将</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#token%E6%9C%BA%E5%88%B6"><span class="nav-text"> token 机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E9%94%81%E6%9C%BA%E5%88%B6"><span class="nav-text"> 各种锁机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E5%94%AF%E4%B8%80%E7%BA%A6%E6%9D%9F"><span class="nav-text"> 各种唯一约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B2%E9%87%8D%E8%A1%A8"><span class="nav-text"> 防重表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E8%AF%B7%E6%B1%82%E5%94%AF%E4%B8%80id"><span class="nav-text"> 全局请求唯一 id</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+            
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">meteor</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br>
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.4</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="
+                
+                    beian.miit.gov.cn
+                
+                ">冀ICP备20010108号</a></div>
+        
+        
+        
+            <div id="start_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

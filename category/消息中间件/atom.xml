@@ -5,6 +5,28 @@
     <link href="https://wait-you.github.io" />
     <updated>2023-06-01T20:37:34.000Z</updated>
     <category term="RabbitMQ" />
+    <category term="Android" />
+    <category term="Docker" />
+    <category term="java" />
+    <category term="git" />
+    <category term="JVM" />
+    <category term="es6" />
+    <category term="Java" />
+    <category term="JWT" />
+    <category term="协程" />
+    <category term="MyBatis" />
+    <category term="Kotlin" />
+    <category term="Node.js" />
+    <category term="Python" />
+    <category term="Service Mesh" />
+    <category term="Vue" />
+    <category term="Spring Security" />
+    <category term="Spring Cloud" />
+    <category term="分布式事务" />
+    <category term="排序算法" />
+    <category term="接口幂等性" />
+    <category term="领域驱动设计" />
+    <category term="设计模式" />
     <entry>
         <id>https://wait-you.github.io/2023/06/02/RabbitMQ/</id>
         <title>RabbitMQ</title>

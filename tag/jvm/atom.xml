@@ -1,0 +1,1177 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://wait-you.github.io</id>
+    <title>玖忆 • Posts by &#34;jvm&#34; tag</title>
+    <link href="https://wait-you.github.io" />
+    <updated>2023-06-06T00:45:23.000Z</updated>
+    <category term="RabbitMQ" />
+    <category term="Android" />
+    <category term="Docker" />
+    <category term="java" />
+    <category term="git" />
+    <category term="JVM" />
+    <category term="es6" />
+    <category term="Java" />
+    <category term="JWT" />
+    <category term="协程" />
+    <category term="MyBatis" />
+    <category term="Kotlin" />
+    <category term="Node.js" />
+    <category term="Python" />
+    <category term="Service Mesh" />
+    <category term="Vue" />
+    <category term="Spring Security" />
+    <category term="Spring Cloud" />
+    <category term="分布式事务" />
+    <category term="排序算法" />
+    <category term="接口幂等性" />
+    <category term="领域驱动设计" />
+    <category term="设计模式" />
+    <entry>
+        <id>https://wait-you.github.io/2023/06/06/JVM/</id>
+        <title>JVM</title>
+        <link rel="alternate" href="https://wait-you.github.io/2023/06/06/JVM/"/>
+        <content type="html">&lt;h1 id=&#34;jvm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#jvm&#34;&gt;#&lt;/a&gt; JVM&lt;/h1&gt;
+&lt;h2 id=&#34;引言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#引言&#34;&gt;#&lt;/a&gt; 引言&lt;/h2&gt;
+&lt;h3 id=&#34;什么是jvm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#什么是jvm&#34;&gt;#&lt;/a&gt; 什么是 JVM&lt;/h3&gt;
+&lt;h4 id=&#34;定义&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#定义&#34;&gt;#&lt;/a&gt; 定义&lt;/h4&gt;
+&lt;p&gt;Java Virtual Machine - java 程序的运行环境（java 二进制字节码的运行环境）&lt;/p&gt;
+&lt;h4 id=&#34;好处&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#好处&#34;&gt;#&lt;/a&gt; 好处&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;一次编写，导出运行
+&lt;ul&gt;
+&lt;li&gt;jvm 屏蔽了字节码和底层操作系统的差异，对外提供了一致的运行环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;自动内存管理，垃圾回收功能&lt;/li&gt;
+&lt;li&gt;数组下标越界检查&lt;/li&gt;
+&lt;li&gt;多态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;比较&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#比较&#34;&gt;#&lt;/a&gt; 比较&lt;/h4&gt;
+&lt;p&gt;jvm jre jdk&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220218195638285.png&#34;
+                      alt=&#34;image-20220218195638285&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
+&lt;h3 id=&#34;学习路线&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#学习路线&#34;&gt;#&lt;/a&gt; 学习路线&lt;/h3&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220218200452408.png&#34;
+                      alt=&#34;image-20220218200452408&#34;
+                &gt;&lt;/p&gt;
+&lt;h2 id=&#34;内存结构&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#内存结构&#34;&gt;#&lt;/a&gt; 内存结构&lt;/h2&gt;
+&lt;h3 id=&#34;程序计数器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#程序计数器&#34;&gt;#&lt;/a&gt; 程序计数器&lt;/h3&gt;
+&lt;h4 id=&#34;定义-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#定义-2&#34;&gt;#&lt;/a&gt; 定义&lt;/h4&gt;
+&lt;p&gt;Program Counter Register 程序计数器（寄存器）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;作用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;记住下一条 jvm 指令的执行地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;特点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;是线程私有的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不会存在内存溢出&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;虚拟机栈&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#虚拟机栈&#34;&gt;#&lt;/a&gt; 虚拟机栈&lt;/h3&gt;
+&lt;h4 id=&#34;定义-3&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#定义-3&#34;&gt;#&lt;/a&gt; 定义&lt;/h4&gt;
+&lt;p&gt;Java Virtual Machine Stacks (Java 虚拟机栈)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个线程运行时所需要的内存，称为虚拟机栈&lt;/li&gt;
+&lt;li&gt;每个栈由多个栈帧（Frame）组成，对应着每次方法调用时所占用的内存&lt;/li&gt;
+&lt;li&gt;每个线程只能有一个活动栈帧，对应着当前正在执行的那个方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;问题辨析&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;垃圾回收是否涉及栈内存？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;栈内存是一次次的方法调用产生的栈桢内存，而栈桢内存在方法调用结束后都会被弹出栈，也就是会自动的被回收掉，所以不需要垃圾回收管理栈内存&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;栈内存的分配越大越好吗？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;栈内存划分的越大，反而会让线程数越少，因为物理内存是一定的，比如，物理内存是 500M, 一个线程使用的是 1M 的栈内存，那么可以开启 500 个线程，如果一个线程使用的是 2M 的栈内存，那么只可以开启 250 个栈内存。所以栈内存不是越大越好，划分的大了，通常只是能够进行更多次的方法递归调用，而不会增强程序的运行效率&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;方法内的局部变量是否线程安全？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;看一个变量是否是线程安全的，其实就看多个线程对这个变量是共享的，还是这个变量对每个线程是私有的。如果方法内局部变量没有逃离方法的作用访问，他是线程安全的。如果是局部变量引用了对象，并逃离方法的作用方法，需要考虑线程安全&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;栈内存溢出&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#栈内存溢出&#34;&gt;#&lt;/a&gt; 栈内存溢出&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;栈桢过多导致栈内存溢出&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;栈桢过大导致栈内存溢出&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;线程运行诊断&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#线程运行诊断&#34;&gt;#&lt;/a&gt; 线程运行诊断&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;案例 1 : cpu 占用过多
+&lt;ul&gt;
+&lt;li&gt;定位
+&lt;ul&gt;
+&lt;li&gt;用 &lt;code&gt;top H -eo pid,tid,%cpu | grep 进程id&lt;/code&gt; （用 ps 命令进一步定位是哪一个线程引起的 cpu 占用过高）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;jstack 进程id&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;可以根据线程 id 找到有问题的线程，进一步定位到问题代码的源代码行号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;案例 2：程序运行很长时间没有结果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;本地方法栈&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#本地方法栈&#34;&gt;#&lt;/a&gt; 本地方法栈&lt;/h3&gt;
+&lt;p&gt;本地方法是指的是不是由 Java 代码编写的方法，因为 Java 代码有一定的限制，有时候不能够直接和操作系统底层打交道，所以需要用一些用 C/C++ 编写的本地方法和操作系统底层打交道，Java 代码可以间接的通过本地方法和来调用底层的功能，这些本地方法使用的内存就叫本地方法栈&lt;/p&gt;
+&lt;p&gt;给本地方法的运行提供一个内存空间&lt;/p&gt;
+&lt;h3 id=&#34;堆&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆&#34;&gt;#&lt;/a&gt; 堆&lt;/h3&gt;
+&lt;p&gt;程序计数器、虚拟机栈、本地方法栈都是线程私有的&lt;/p&gt;
+&lt;p&gt;堆、方法区都是线程共享的区&lt;/p&gt;
+&lt;h4 id=&#34;定义-4&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#定义-4&#34;&gt;#&lt;/a&gt; 定义&lt;/h4&gt;
+&lt;p&gt;Heap 堆&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过 new 关键字，创建对象都会使用堆内存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;特点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;他是线程共享的，堆中对象都需要考虑线程安全问题&lt;/li&gt;
+&lt;li&gt;有垃圾回收机制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;堆内存溢出&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆内存溢出&#34;&gt;#&lt;/a&gt; 堆内存溢出&lt;/h4&gt;
+&lt;p&gt;通过 &lt;code&gt;-Xmx8M&lt;/code&gt;  改变堆大小&lt;/p&gt;
+&lt;h4 id=&#34;堆内存诊断&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#堆内存诊断&#34;&gt;#&lt;/a&gt; 堆内存诊断&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;jps 工具
+&lt;ul&gt;
+&lt;li&gt;查看当前系统中有哪些 Java 进程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;jmap 工具
+&lt;ul&gt;
+&lt;li&gt;查看堆内存占用情况   &lt;code&gt;jmap -heap 进程id&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;jconsole 工具
+&lt;ul&gt;
+&lt;li&gt;图形界面的，多功能的检测工具，可以连续监测&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;案例&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;垃圾回收后，内存占用仍然很高
+&lt;ul&gt;
+&lt;li&gt;jps 查询 进程 id&lt;/li&gt;
+&lt;li&gt;jmap 查看内存占用情况&lt;/li&gt;
+&lt;li&gt;或 jconsole 查看内存占用情况&lt;/li&gt;
+&lt;li&gt;使用 jvirtulvm 堆转储查看对象使用情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;方法区&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#方法区&#34;&gt;#&lt;/a&gt; 方法区&lt;/h3&gt;
+&lt;h4 id=&#34;定义-5&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#定义-5&#34;&gt;#&lt;/a&gt; 定义&lt;/h4&gt;
+&lt;p&gt;所有 java 虚拟机线程共享的区&lt;/p&gt;
+&lt;p&gt;它存储了跟类的结构相关的信息：类的成员变量、方法数据：成员方法和构造方法、运行时常量池&lt;/p&gt;
+&lt;p&gt;方法区在虚拟机启动时被创建，逻辑上是堆的组成部分&lt;/p&gt;
+&lt;p&gt;方法区是规范，永久代和元空间是实现，不同的厂商实现不同&lt;/p&gt;
+&lt;p&gt;方法区也会导致内存溢出的错误&lt;/p&gt;
+&lt;h4 id=&#34;组成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#组成&#34;&gt;#&lt;/a&gt; 组成&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220221142729070.png&#34;
+                      alt=&#34;image-20220221142729070&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;在 1.8 以前类的结构信息和常量池都在方法区（实现永久代）中，1.8 之后的字符串常量池在堆中，类的结构信息和常量池在不包括字符串常量池在系统内存（元空间）中&lt;/p&gt;
+&lt;h4 id=&#34;内存溢出&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#内存溢出&#34;&gt;#&lt;/a&gt; 内存溢出&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;-XX:MaxPermSize=8M&lt;/code&gt;  设置永久代大小&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-XX:MaxMetaspaceSize=8M&lt;/code&gt;  设置元空间大小&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Classloader&lt;/code&gt;  类可以用来加载类的二进制字节码&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;TestMapper&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ClassLoader&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;type&#34;&gt;TestMapper&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;testMapper&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;TestMapper&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (; j &amp;lt; &lt;span class=&#34;number&#34;&gt;10000&lt;/span&gt;; j++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;//ClassWriter 作用是生成类的二进制字节码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;type&#34;&gt;ClassWriter&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;cs&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ClassWriter&lt;/span&gt;(&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;//版本号 public 类名 包名 父类 接口&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                cs.visit(Opcodes.V1_8, Opcodes.ACC_PUBLIC, &lt;span class=&#34;string&#34;&gt;&amp;quot;Class&amp;quot;&lt;/span&gt; + j, &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;quot;java/lang/Object&amp;quot;&lt;/span&gt;, &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;//返回 byte[]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;type&#34;&gt;byte&lt;/span&gt;[] code = cs.toByteArray();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;//执行类的加载&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                testMapper.defineClass(&lt;span class=&#34;string&#34;&gt;&amp;quot;Class&amp;quot;&lt;/span&gt; + j, code, &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;, code.length); &lt;span class=&#34;comment&#34;&gt;//class对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;span class=&#34;keyword&#34;&gt;finally&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            System.out.println(j);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h3 id=&#34;运行时常量池&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#运行时常量池&#34;&gt;#&lt;/a&gt; 运行时常量池&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;常量池，就是一张表，虚拟机指令根据这张常量表找到要执行的类名、方法名、参数类型、字面量等信息&lt;/li&gt;
+&lt;li&gt;运行时常量池，常量池是 *.class 文件中的，当该类被加载，他的常量池信息就会放入运行时常量池，并把里面的符号地址变为真实地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;二进制字节码包括类基本信息、常量池、类方法定义包含虚拟机指令&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;javac HelloWorld.java&lt;/code&gt;  编译&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;javap -v HelloWorld.class&lt;/code&gt;  反编译&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;HelloWorld&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        System.out.println(&lt;span class=&#34;string&#34;&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;66&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Classfile /home/meteor/code/yygh-parent/service/service_hosp/src/test/java/cn/wenhe9/yygh/hosp/test/HelloWorld.&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;title class_&#34;&gt;Last&lt;/span&gt; modified &lt;span class=&#34;number&#34;&gt;2022&lt;/span&gt;年&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;月&lt;span class=&#34;number&#34;&gt;21&lt;/span&gt;日; size &lt;span class=&#34;number&#34;&gt;450&lt;/span&gt; bytes&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  SHA-&lt;span class=&#34;number&#34;&gt;256&lt;/span&gt; checksum 312583e7cc82948e86fee9a726d80a777ce140ca021a9ab44dcd6d238ad50381&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  Compiled from &lt;span class=&#34;string&#34;&gt;&amp;quot;HelloWorld.java&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;cn&lt;/span&gt;.wenhe9.yygh.hosp.test.HelloWorld&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  minor version: &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  major version: &lt;span class=&#34;number&#34;&gt;61&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  flags: (&lt;span class=&#34;number&#34;&gt;0x0021&lt;/span&gt;) ACC_PUBLIC, ACC_SUPER&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  this_class: #&lt;span class=&#34;number&#34;&gt;21&lt;/span&gt;                         &lt;span class=&#34;comment&#34;&gt;// cn/wenhe9/yygh/hosp/test/HelloWorld&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  super_class: #&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;                         &lt;span class=&#34;comment&#34;&gt;// java/lang/Object&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  interfaces: &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;, fields: &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;, methods: &lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;, attributes: &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Constant pool:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt; = Methodref          #&lt;span class=&#34;number&#34;&gt;2.&lt;/span&gt;#&lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;          &lt;span class=&#34;comment&#34;&gt;// java/lang/Object.&amp;quot;&amp;lt;init&amp;gt;&amp;quot;:()V&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt; = Class              #&lt;span class=&#34;number&#34;&gt;4&lt;/span&gt;             &lt;span class=&#34;comment&#34;&gt;// java/lang/Object&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;3&lt;/span&gt; = NameAndType        #&lt;span class=&#34;number&#34;&gt;5&lt;/span&gt;:#&lt;span class=&#34;number&#34;&gt;6&lt;/span&gt;          &lt;span class=&#34;comment&#34;&gt;// &amp;quot;&amp;lt;init&amp;gt;&amp;quot;:()V&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;4&lt;/span&gt; = Utf8               java/lang/Object&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;5&lt;/span&gt; = Utf8               &amp;lt;init&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;6&lt;/span&gt; = Utf8               ()V&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;7&lt;/span&gt; = Fieldref           #&lt;span class=&#34;number&#34;&gt;8.&lt;/span&gt;#&lt;span class=&#34;number&#34;&gt;9&lt;/span&gt;          &lt;span class=&#34;comment&#34;&gt;// java/lang/System.out:Ljava/io/PrintStream;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;8&lt;/span&gt; = Class              #&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;            &lt;span class=&#34;comment&#34;&gt;// java/lang/System&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   #&lt;span class=&#34;number&#34;&gt;9&lt;/span&gt; = NameAndType        #&lt;span class=&#34;number&#34;&gt;11&lt;/span&gt;:#&lt;span class=&#34;number&#34;&gt;12&lt;/span&gt;        &lt;span class=&#34;comment&#34;&gt;// out:Ljava/io/PrintStream;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt; = Utf8               java/lang/System&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;11&lt;/span&gt; = Utf8               out&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;12&lt;/span&gt; = Utf8               Ljava/io/PrintStream;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;13&lt;/span&gt; = String             #&lt;span class=&#34;number&#34;&gt;14&lt;/span&gt;            &lt;span class=&#34;comment&#34;&gt;// hello world&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;14&lt;/span&gt; = Utf8               hello world&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;15&lt;/span&gt; = Methodref          #&lt;span class=&#34;number&#34;&gt;16.&lt;/span&gt;#&lt;span class=&#34;number&#34;&gt;17&lt;/span&gt;        &lt;span class=&#34;comment&#34;&gt;// java/io/PrintStream.println:(Ljava/lang/String;)V&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;16&lt;/span&gt; = Class              #&lt;span class=&#34;number&#34;&gt;18&lt;/span&gt;            &lt;span class=&#34;comment&#34;&gt;// java/io/PrintStream&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;17&lt;/span&gt; = NameAndType        #&lt;span class=&#34;number&#34;&gt;19&lt;/span&gt;:#&lt;span class=&#34;number&#34;&gt;20&lt;/span&gt;        &lt;span class=&#34;comment&#34;&gt;// println:(Ljava/lang/String;)V&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;18&lt;/span&gt; = Utf8               java/io/PrintStream&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;19&lt;/span&gt; = Utf8               println&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;20&lt;/span&gt; = Utf8               (Ljava/lang/String;)V&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;21&lt;/span&gt; = Class              #&lt;span class=&#34;number&#34;&gt;22&lt;/span&gt;            &lt;span class=&#34;comment&#34;&gt;// cn/wenhe9/yygh/hosp/test/HelloWorld&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;22&lt;/span&gt; = Utf8               cn/wenhe9/yygh/hosp/test/HelloWorld&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;23&lt;/span&gt; = Utf8               Code&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt; = Utf8               LineNumberTable&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;25&lt;/span&gt; = Utf8               main&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;26&lt;/span&gt; = Utf8               ([Ljava/lang/String;)V&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;27&lt;/span&gt; = Utf8               SourceFile&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  #&lt;span class=&#34;number&#34;&gt;28&lt;/span&gt; = Utf8               HelloWorld.java&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; cn.wenhe9.yygh.hosp.test.HelloWorld();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    descriptor: ()V&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    flags: (&lt;span class=&#34;number&#34;&gt;0x0001&lt;/span&gt;) ACC_PUBLIC&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    Code:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      stack=&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, locals=&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, args_size=&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;: aload_0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;: invokespecial #&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;                  &lt;span class=&#34;comment&#34;&gt;// Method java/lang/Object.&amp;quot;&amp;lt;init&amp;gt;&amp;quot;:()V&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &lt;span class=&#34;number&#34;&gt;4&lt;/span&gt;: &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      LineNumberTable:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        line &lt;span class=&#34;number&#34;&gt;7&lt;/span&gt;: &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(java.lang.String[])&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    descriptor: ([Ljava/lang/String;)V&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    flags: (&lt;span class=&#34;number&#34;&gt;0x0009&lt;/span&gt;) ACC_PUBLIC, ACC_STATIC&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    Code:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      stack=&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;, locals=&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;, args_size=&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;: getstatic     #&lt;span class=&#34;number&#34;&gt;7&lt;/span&gt;                  &lt;span class=&#34;comment&#34;&gt;// Field java/lang/System.out:Ljava/io/PrintStream;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;: ldc           #&lt;span class=&#34;number&#34;&gt;13&lt;/span&gt;                 &lt;span class=&#34;comment&#34;&gt;// String hello world&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &lt;span class=&#34;number&#34;&gt;5&lt;/span&gt;: invokevirtual #&lt;span class=&#34;number&#34;&gt;15&lt;/span&gt;                 &lt;span class=&#34;comment&#34;&gt;// Method java/io/PrintStream.println:(Ljava/lang/String;)V&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;         &lt;span class=&#34;number&#34;&gt;8&lt;/span&gt;: &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      LineNumberTable:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        line &lt;span class=&#34;number&#34;&gt;9&lt;/span&gt;: &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        line &lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;: &lt;span class=&#34;number&#34;&gt;8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;SourceFile: &lt;span class=&#34;string&#34;&gt;&amp;quot;HelloWorld.java&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h3 id=&#34;stringtable&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#stringtable&#34;&gt;#&lt;/a&gt; StringTable&lt;/h3&gt;
+&lt;p&gt;常量池和串池的关系&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;//StringTable[&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;ab&amp;quot;] hashtable结构，不能扩容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;HelloWorld&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;//常量池中的信息，都会被加载到运行时常量池中，这时 a b ab 都是常量值中的符号，还没有变为 java 字符串对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;//ldc #2 会把 a 符号 变为 &amp;quot;a&amp;quot; 字符串对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;//ldc #3 会把 b 符号 变为 &amp;quot;b&amp;quot; 字符串对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;//ldc #4 会把 ab 符号 变为 &amp;quot;ab&amp;quot; 字符串对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;s1&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;a&amp;quot;&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;//懒惰的 当运行到时，先去串池找，没有把他放入串池，有就用串池的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;s2&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;s3&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;ab&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;s4&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; s1 + s2; &lt;span class=&#34;comment&#34;&gt;// new StringBuilder().append(&amp;quot;a&amp;quot;).append(&amp;quot;b&amp;quot;).toString() new String(&amp;quot;ab&amp;quot;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;s5&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;a&amp;quot;&lt;/span&gt; + &lt;span class=&#34;string&#34;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;//javac在编译器的优化，&amp;quot;a&amp;quot;和&amp;quot;b&amp;quot;都是常量，拼接的结果是确定的，既然是确定的，那么在编译期间知道他的结果就是&amp;quot;ab&amp;quot;不会是其他的,不需要再像上面的方式进行拼接&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h4 id=&#34;特性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#特性&#34;&gt;#&lt;/a&gt; 特性&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;常量池中的字符串近是符号，第一次用到时才变为对象&lt;/li&gt;
+&lt;li&gt;利用串池的机制，来避免重复创建字符串对象&lt;/li&gt;
+&lt;li&gt;字符串变量拼接的原理是 StringBuilder (1.8)&lt;/li&gt;
+&lt;li&gt;字符串常量拼接的原理是编译器优化&lt;/li&gt;
+&lt;li&gt;可以使用 &lt;code&gt;intern&lt;/code&gt;  方法，主动将串池中还没有的字符串对象放入串池&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;返回字符串对象的规范表示。一个字符串池，最初是空的，由 String 类私下维护。当调用 intern 方法时，如果池中已经包含一个等于该 String 对象的字符串，由 equals (Object) 方法确定，则返回池中的字符串。否则，将此 String 对象添加到池中并返回对该 String 对象的引用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在 1.6 中，常量池包括字符串常量池在永久代 perm 中，所以，当使用常量时是直接放在常量池中，当使用变量拼接时字符串时，他先经过创建 StringBuilder，调用构造方法，加载参数，调用 append 方法，最后调用 toString 方法，在 toString 方法中，通过 new String (value) 创建对象，是在堆中。当使用 intern 方法时，先看字符串常量池中是否有该字符串，如果有，就不放入，如果没有，就把这个字符串的值拷贝到字符串常量池中，在返回他的地址引用，所以此时有两个该字符串，一个是最开始的在堆中，一个因为拷贝在字符串常量池或者说是在永久代中，所以两个对象不相同&lt;/p&gt;
+&lt;p&gt;在 1.8 中，常量池在元空间中，而字符串常量池在堆中，并且当调用 intren 方法时，先看字符串常量池中是否有该字符串，如果有，就返回字符串常量池中的地址引用，如果没有，就把该字符串的地址存入字符串常量池并返回这个地址引用&lt;/p&gt;
+&lt;p&gt;在 1.6 中，如果要测试，字符串常量池在永久代中，可以 &lt;code&gt;-XX:MaxPermSize=10m&lt;/code&gt;  设置永久代的大小，之后程序一直往字符串常量池中添加字符串，并占有字符串的引用&lt;/p&gt;
+&lt;p&gt;在 1.8 中，如果要测试，字符串常量池在堆中，除了要设置 &lt;code&gt;-Xmx10m&lt;/code&gt;  设置堆内存的大小，还要设置 &lt;code&gt;-XX:-UseGCOverHeadLimit&lt;/code&gt; ，这是这是垃圾回收的一个限制，当 98% 的时间花在了垃圾回收，但是只有 2% 的对空间被回收，会出现内存溢出异常异常 &lt;code&gt;+&lt;/code&gt;  就是打开， &lt;code&gt;-&lt;/code&gt;  就是关闭&lt;/p&gt;
+&lt;h4 id=&#34;stringtable垃圾回收&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#stringtable垃圾回收&#34;&gt;#&lt;/a&gt; StringTable 垃圾回收&lt;/h4&gt;
+&lt;p&gt;StringTable 在堆内存中，也会触发垃圾回收&lt;/p&gt;
+&lt;p&gt;测试:&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;package&lt;/span&gt; cn.wenhe9.yygh.hosp.test;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * &lt;span class=&#34;doctag&#34;&gt;@author&lt;/span&gt; DuJinliang&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * 2022/2/21&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; -Xmx10M -XX:+PrintStringTableStatistics -XX:+PrintGCDetails -verbose:gc&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;HelloWorld&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (&lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;; j &amp;lt; &lt;span class=&#34;number&#34;&gt;100&lt;/span&gt;; j++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                String.valueOf(j).intern();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                i++;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt; (Throwable e)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            e.printStackTrace();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;span class=&#34;keyword&#34;&gt;finally&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            System.out.println(i);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Xmx10M -XX:+PrintStringTableStatistics -XX:+PrintGCDetails -verbose:gc&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Xmx10M&lt;/code&gt;  设置堆内存大小为 10M&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintStringTableStatistics&lt;/code&gt;  打印字符串表的信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintGCDetails&lt;/code&gt;  打印垃圾回收的信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;verbose:gc&lt;/code&gt;  设置日志级别为 gc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;stringtable性能调优&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#stringtable性能调优&#34;&gt;#&lt;/a&gt; StringTable 性能调优&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;​	 &lt;code&gt;-XX:StringTableSize=1009&lt;/code&gt;  设置串表的 hash 表的桶的大小尽可能的大&lt;/li&gt;
+&lt;li&gt;字符串对象为什么要入池？
+&lt;ul&gt;
+&lt;li&gt;防止重复的字符串对象占用内存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;直接内存&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#直接内存&#34;&gt;#&lt;/a&gt; 直接内存&lt;/h3&gt;
+&lt;h4 id=&#34;定义-6&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#定义-6&#34;&gt;#&lt;/a&gt; 定义&lt;/h4&gt;
+&lt;p&gt;Direct Memory&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;常见于 NIO 操作时，用于数据缓冲区&lt;/li&gt;
+&lt;li&gt;分配回收成本较高，单独写性能高&lt;/li&gt;
+&lt;li&gt;不受 JVM 内存回收管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220226195015543.png&#34;
+                      alt=&#34;image-20220226195015543&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220226195035365.png&#34;
+                      alt=&#34;image-20220226195035365&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;分配和回收原理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#分配和回收原理&#34;&gt;#&lt;/a&gt; 分配和回收原理&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;使用了 Unsafe 对象完成直接内存的分配和回收，并且回收需要主动调用 freeMemory 方法&lt;/li&gt;
+&lt;li&gt;ByteBuffer 的实现类内部，使用了 Cleaner（虚引用）来监测 ByteBuffer 对象，一旦 ByteBuffer 对象被垃圾回收，那么就会由 ReferenceHandler 线程通过 Cleaner 的 clean 方法调用 freeMemory 方法来释放内存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;性能调优&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#性能调优&#34;&gt;#&lt;/a&gt; 性能调优&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;禁用显式回收对直接内存的影响
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-XX:+DisableExplictGC&lt;/code&gt;  禁用显式垃圾回收&lt;/li&gt;
+&lt;li&gt;如 &lt;code&gt;System.gc()&lt;/code&gt;  显式的垃圾回收， Full GC 除了 新生代 老年代也会被回收&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;可以使用 &lt;code&gt;Unsafe&lt;/code&gt;  对象直接进行对内存的分配和回收，直接来管理这块直接内存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;执行引擎&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#执行引擎&#34;&gt;#&lt;/a&gt; 执行引擎&lt;/h2&gt;
+&lt;h3 id=&#34;垃圾回收&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#垃圾回收&#34;&gt;#&lt;/a&gt; 垃圾回收&lt;/h3&gt;
+&lt;h4 id=&#34;如何判断对象可以回收&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#如何判断对象可以回收&#34;&gt;#&lt;/a&gt; 如何判断对象可以回收&lt;/h4&gt;
+&lt;h5 id=&#34;引用计数法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#引用计数法&#34;&gt;#&lt;/a&gt; 引用计数法&lt;/h5&gt;
+&lt;p&gt;只要一个对象被其他对象所引用，那么这个对象的引用加一，如果引用了两次那么引用计数加二，如果一个变量不再引用她了，那么他的引用计数减一，当他的引用计数变为 0 的时候，代表没有对象再引用他了，那么他就可以作为一个垃圾进行一个回收。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;弊端&lt;/strong&gt; ： 循环引用&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220226203108552.png&#34;
+                      alt=&#34;image-20220226203108552&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;可达性分析算法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可达性分析算法&#34;&gt;#&lt;/a&gt; 可达性分析算法&lt;/h5&gt;
+&lt;p&gt;首先确定一系列的根对象，所谓根对象，就是肯定不能被当成垃圾回收的对象，就称之为根对象，在垃圾回收之前，首先会对堆内存中的所有对象进行一遍扫描，看每一个对象是否被刚刚的根对象直接或者间接的引用，如果是，那么这个对象就不能被回收，反之，如果一个对象没有被根对象直接或者间接的引用，那么这个对象就可以作为垃圾将来被回收&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;jmap -dump:format=b,live,file=文件名称 进程号&lt;/code&gt; 抓取当前 jvm 堆的状态 b 是二进制，live 是获取当前存活的对象，会触发一次垃圾回收&lt;/p&gt;
+&lt;p&gt;使用 mat（Memory Analyze Tool）工具分析堆&lt;/p&gt;
+&lt;h5 id=&#34;四中引用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#四中引用&#34;&gt;#&lt;/a&gt; 四中引用&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;强引用
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;new&lt;/code&gt;  了一个对象，把这个对象通过 &lt;code&gt;=&lt;/code&gt;  赋值运算符赋值给了一个变量，那么这个变量就强引用了这个对象&lt;/li&gt;
+&lt;li&gt;特点
+&lt;ul&gt;
+&lt;li&gt;只要沿着 GC Root 的引用链能够找到他，就不会被垃圾回收&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;总结
+&lt;ul&gt;
+&lt;li&gt;只有所有 GC Roots 对象都不通过【强引用】引用该对象，该对象才能被垃圾回收&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;软引用 (SoftReference)
+&lt;ul&gt;
+&lt;li&gt;当垃圾回收时，并且内存不够时，会把软引用的对象回收掉，前提是没有强引用引用他&lt;/li&gt;
+&lt;li&gt;总结
+&lt;ul&gt;
+&lt;li&gt;仅有软引用引用该对象时，在垃圾回收后，内存仍不足会再次发出垃圾回收，回收软引用的对象&lt;/li&gt;
+&lt;li&gt;可以配合引用队列来释放软引用自身&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;弱引用（WeakReference）
+&lt;ul&gt;
+&lt;li&gt;只要发生了垃圾回收，不管内存是否充足，都会把若引用的对象回收掉，前提是没有强引用引用他&lt;/li&gt;
+&lt;li&gt;总结
+&lt;ul&gt;
+&lt;li&gt;仅有弱引用引用该对象时，在垃圾回收时，无论内存是否充足，都会回收弱引用对象&lt;/li&gt;
+&lt;li&gt;可以配合引用队列来释放弱引用自身&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;虚引用（PhantomReference）
+&lt;ul&gt;
+&lt;li&gt;直接内存&lt;/li&gt;
+&lt;li&gt;在虚引用引用的对象在垃圾回收时，虚引用自己就会放入引用队列，从而间接的用一个线程调用虚引用的 unsafe 的 freeMemory 方法去释放那块直接内存&lt;/li&gt;
+&lt;li&gt;总结
+&lt;ul&gt;
+&lt;li&gt;必须配合引用队列使用，主要配合 ByteBuffer 使用，被引用对象回收时，会将虚引用入队，由 Reference Handler 线程调用虚引用相关方法释放直接内存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;终接器引用（finalReference）
+&lt;ul&gt;
+&lt;li&gt;当没有强引用引用对象时，对象会由虚拟机创建对应的终结器引用，当这个对象被垃圾回收时， 把终结器引用加入引用队列，由一个优先级很低的 finalizeHandler 线程，在某些时机查看引用队列中是否有终结器引用，如果有，就根据终结器引用找到刚刚要垃圾回收的对象，并且调用他的 finalize 方法，等调用完了，下一次垃圾回收时，就会把这个对象回收掉&lt;/li&gt;
+&lt;li&gt;总结
+&lt;ul&gt;
+&lt;li&gt;无需手动编码，但其内部配合引用队列使用，在垃圾回收时，终结器引用入队（被引用对象暂时没有被回收），再由 Finalizer 线程通过终结器引用找到被引用对象并调用他的 finalize 方法，第二次 GC 时才能回收被引用对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当软引用和弱引用没有直接的强引用所引用，那么当垃圾回收发生时，他们都有可能被回收掉&lt;/p&gt;
+&lt;p&gt;如果软引用、若引用，当引用的对象被回收掉了以后，那么软引用自身也是一个对象，他如果在创建时给他分配了一个引用对队列，他所引用的对象被回收时，他就会进入引用队列，因为软引用、弱引用自身也占了一定的内存，如果要对他两所占用的内存做进一步的释放，可以通过引用队列找到他两，对他作进一步的处理，比如他两还可能被强引用所引用，所以可以在引用队列中依次遍历，把他们释放掉&lt;/p&gt;
+&lt;p&gt;软、弱队列既可以配合引用队列使用也可以不配合引用队列使用&lt;/p&gt;
+&lt;p&gt;虚引用和终结器引用必须配合引用队列使用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;软引用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;HelloWorld&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; args&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;// 内存空间比较有限，一些不重要的资源用软引用去关联，当空间紧张时就可以回收掉&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;// 引用队列&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token class-name&#34;&gt;ReferenceQueue&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; queue &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;ReferenceQueue&lt;/span&gt;&lt;span class=&#34;token generics&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token class-name&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;SoftReference&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&gt;&lt;/span&gt; list &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;ArrayList&lt;/span&gt;&lt;span class=&#34;token generics&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; i &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; i &lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; i&lt;span class=&#34;token operator&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;// 关联了引用队列，当软引用所关联的 byte [] 被回收时，软引用自己会加入到 queue 中去&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token class-name&#34;&gt;SoftReference&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; ref &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;SoftReference&lt;/span&gt;&lt;span class=&#34;token generics&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1024&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1024&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; queue&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token class-name&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;out&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;ref&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            list&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;add&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;ref&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token class-name&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;out&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;list&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;// 从队列中获取无用的 软引用 对象，并移除&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token class-name&#34;&gt;Reference&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; poll &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; queue&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;poll&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;poll &lt;span class=&#34;token operator&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            list&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;poll&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            poll &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; queue&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;poll&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;SoftReference&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; softReference &lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; list&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token class-name&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;out&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;softReference&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;code￼&lt;span class=&#34;token number&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;垃圾回收算法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#垃圾回收算法&#34;&gt;#&lt;/a&gt; 垃圾回收算法&lt;/h4&gt;
+&lt;h5 id=&#34;标记清除&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标记清除&#34;&gt;#&lt;/a&gt; 标记清除&lt;/h5&gt;
+&lt;p&gt;分两个阶段，第一个阶段，根据可达性算法标记不再被使用的对象，第二个阶段，对被标记的对象进行回收，回收只是将垃圾对象的内存起始结束地址做一个标记，存储到空闲分区表中&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点
+&lt;ul&gt;
+&lt;li&gt;速度快，清楚操作只需要把垃圾对象的内存起始结束地址做一个记录，不需要做更多的额外处理，所以他的清楚速度、整个垃圾回收的速度是比较快的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;缺点
+&lt;ul&gt;
+&lt;li&gt;容易产生内存碎片，在清除以后不会再对空闲的内存空间作进一步的整理工作，如果分配了一个较大的对象，每个空闲的内存空间都不足以满足需要，但是若干个空闲的总内存空间是足够的，但是因为空间不连续（内存碎片），造成新对象仍然不能有一个有效的内存来使用，还是会造成内存溢出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220228125439542.png&#34;
+                      alt=&#34;image-20220228125439542&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;标记整理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标记整理&#34;&gt;#&lt;/a&gt; 标记整理&lt;/h5&gt;
+&lt;p&gt;分两个阶段，第一个阶段标记，先对对象进行标记，看哪些对象是垃圾，第二个阶段整理，在清除垃圾的过程中，他会把可用的对象向前移动，使内存更为紧凑&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点
+&lt;ul&gt;
+&lt;li&gt;没有内存碎片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;缺点
+&lt;ul&gt;
+&lt;li&gt;由于整理牵扯到对象的移动，效率变得较低&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220228125709844.png&#34;
+                      alt=&#34;image-20220228125709844&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;复制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#复制&#34;&gt;#&lt;/a&gt; 复制&lt;/h5&gt;
+&lt;p&gt;将内存分为两个区域，一个 FROM 区，一个 TO 区两个阶段，其中 TO 区始终空闲着，一个对象都没有，找到哪些被引用的对象，将他们标记为垃圾，从 FROM 区上存活的对象复制到 TO 区，复制的过程中就会完成碎片的整理，等复制完成 FROM 区全是垃圾的，把 FROM 区清空，交换 FROM 和 TO 的位置，TO 总是空闲的一块分区&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点
+&lt;ul&gt;
+&lt;li&gt;不会产生碎片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;缺点
+&lt;ul&gt;
+&lt;li&gt;复制算法会占用双倍的内存空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220228131040558.png&#34;
+                      alt=&#34;image-20220228131040558&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;虚拟机不会采用单独的一种算法，结合前面的三种算法协同工作，具体实现是虚拟机中分代的垃圾回收机制，他把堆内存大的区域分成两块，一块是新生代，一块是老年代，而在新生代里又进一步划分成三个小的区域：伊甸园、幸存区 From、幸存区 To&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么要这样的区域划分？&lt;/p&gt;
+&lt;p&gt;主要是因为 Java 中有的对象需要长时间使用，长时间使用的对象就放在老年代中，而用完就要丢弃的对象，就放在新生代中，这样就可以针对对象的生命周期的不同特点进行不同的垃圾回收策略，老年代的垃圾回收很久才发生一次，新生代的垃圾回收就发生的比较频繁，新生代处理的都是朝生夕死的对象，而老年代处理的都是更有价值、长时间存活的对象，这样不同的区域采用不同的算法可以更有效得对垃圾回收做一个管理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;当创建一个新的对象时，那这个新的对象，就会默认采用伊甸园的一片空间，&lt;/li&gt;
+&lt;li&gt;当新的对象不断的创建，伊甸园逐渐被占满了，当再有一个对象被创建时，伊甸园的空间已经不够了、容纳不下了，这时候就会触发一次垃圾回收，&lt;/li&gt;
+&lt;li&gt;新生代的垃圾回收称作 &lt;code&gt;Minor GC&lt;/code&gt; ，引发  &lt;code&gt;Stop the World&lt;/code&gt;  暂停其他的用户线程，由垃圾回收线程完成垃圾回收的动作，当垃圾回收动作做完用户线程才能继续运行，&lt;/li&gt;
+&lt;li&gt;采用复制算法，把存活的对象复制到幸存区 To 中，复制过来以后，会将幸存对象的寿命加一，刚开始寿命是 0，经历了一次垃圾回收还不死，那么寿命加一，交换幸存区 From 和幸存区 To 的位置（实际变得不是物理地址，而是地址引用），&lt;/li&gt;
+&lt;li&gt;继续向伊甸园分配新的对象，刚才放不下的对象就放进去了，&lt;/li&gt;
+&lt;li&gt;又经过了一段时间，伊甸园又满了，又触发一次垃圾回收，这一次除了要把伊甸园中存活的对象找到，还要找到幸存区 From 中存活的对象，把所有存活的对象放到幸存区 To 中，寿命加一，交换 From 和 To，那么新对象又可以放入伊甸园&lt;/li&gt;
+&lt;li&gt;当幸存区 From 中存活的对象经历了 15 次垃圾回收还活着（寿命超过一定的阈值，最大寿命是 15，4bit，在不同的垃圾回收器阈值不同），说明该对象价值比较高，就把他晋升到老年代，因为老年代的垃圾回收频率比较低，不会轻易地回收掉，那么价值较高的对象，就把他晋升到老年代中。&lt;/li&gt;
+&lt;li&gt;如果老年代的内存空间不足时，先尝试 &lt;code&gt;Minor GC&lt;/code&gt;  看能否把新生代的空间释放一部分分配对象，结果发现 &lt;code&gt;Minor GC&lt;/code&gt;  以后空间还不足，就会触发 &lt;code&gt;Full GC&lt;/code&gt; ，从新生到老年一个全面的清理，相对于 &lt;code&gt;Minor GC&lt;/code&gt;  的 STW 的时间要更长，老年代采用的回收算法和新生代是不一样的，老年代的对象比较多，采用的算法是标记清除或者标记整理，后者较慢，老年代的对象都不是那么容易被当成垃圾回收，所以回收效率、时间更低，STW 的时间也会更长，如果 &lt;code&gt;FULL GC&lt;/code&gt;  后，空间足够，则皆大欢喜，否则，分配失败，抛出内存溢出异常&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220228135050354.png&#34;
+                      alt=&#34;image-20220228135050354&#34;
+                &gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么垃圾回收的时候会把其他用户正在执行的线程暂停掉？&lt;/p&gt;
+&lt;p&gt;因为垃圾回收牵扯到对象的复制，对象的地址会发成改变，如果多个线程同时运行，就会造成混乱，对象都移动了，其他线程在根据原来的地址就找不到了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;相关vm参数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#相关vm参数&#34;&gt;#&lt;/a&gt; 相关 VM 参数&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;堆初始大小&lt;/td&gt;
+&lt;td&gt;-Xms&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;堆最大大小&lt;/td&gt;
+&lt;td&gt;-Xmx 或 -XX:MaxHeapSize=size&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;新生代大小&lt;/td&gt;
+&lt;td&gt;-Xmn 或 (-XX:NewSize=size + -XX:MaxNewSize=size)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;幸存区比例（动态）&lt;/td&gt;
+&lt;td&gt;-XX:InitialSurvivorRatio=ratio 和 -XX:+UseAdaptiveSizePolicy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;幸存区比例&lt;/td&gt;
+&lt;td&gt;-XX:SuvivorRatio=ratio&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;晋升阈值&lt;/td&gt;
+&lt;td&gt;-XX:MaxTenuringThreshold=threshold&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;晋升详情&lt;/td&gt;
+&lt;td&gt;-XX:+PrintTenuringDistribution&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GC 详情&lt;/td&gt;
+&lt;td&gt;-XX:+PringGCDetails -verbose:gc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FullGC 前 MinorGC&lt;/td&gt;
+&lt;td&gt;-XX:+ScavengeBeforeFullGC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当子线程发生 OOM 错误时，会将子线程的全部资源释放掉，故而不影响到主线程&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;垃圾回收器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#垃圾回收器&#34;&gt;#&lt;/a&gt; 垃圾回收器&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;串行
+&lt;ul&gt;
+&lt;li&gt;单线程&lt;/li&gt;
+&lt;li&gt;堆内存较小，适合个人电脑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;吞吐量优先
+&lt;ul&gt;
+&lt;li&gt;多线程&lt;/li&gt;
+&lt;li&gt;堆内存较大，多核 CPU&lt;/li&gt;
+&lt;li&gt;让单位时间内，STW 的时间最短&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;响应时间有效
+&lt;ul&gt;
+&lt;li&gt;多线程&lt;/li&gt;
+&lt;li&gt;堆内存较大，多核 CPU&lt;/li&gt;
+&lt;li&gt;尽可能让 STW 的单次时间最短&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;串行&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#串行&#34;&gt;#&lt;/a&gt; 串行&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;-XX:+UseSerialGC = Serial + SerialOld&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Serial 工作在新生代，使用复制算法&lt;/p&gt;
+&lt;p&gt;SerialOld 工作在老年代，采用标记加整理算法&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220228151826294.png&#34;
+                      alt=&#34;image-20220228151826294&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;吞吐量优先&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#吞吐量优先&#34;&gt;#&lt;/a&gt; 吞吐量优先&lt;/h4&gt;
+&lt;p&gt;1.8 默认使用并行的垃圾回收器 Parallel  Parallel（并行）&lt;/p&gt;
+&lt;p&gt;-XX:+UseParallelGC 新生代的垃圾回收器 复制算法 开启其中一个会连带着开启另一个&lt;/p&gt;
+&lt;p&gt;-XX:+UseParallelOldGC 老年代的垃圾回收器 标记 + 整理算法&lt;/p&gt;
+&lt;p&gt;-XX:+UseAdaptiveSizePolicy 动态调整伊甸园和幸存区的比例包括整个堆的大小以及晋升阈值的大小&lt;/p&gt;
+&lt;p&gt;-XX:GCTimeRatio=ratio 一般是 19 0.05 一百分钟内允许五分钟的垃圾回收时间 调整垃圾回收的时间占总时间的占比 1/1+ratio 如果达不到目标，Parallel 回收期就会调整堆的大小来达到这个目标&lt;/p&gt;
+&lt;p&gt;-XX:MaxGCPauseMillis=ms 最大暂停毫秒数 默认 200 毫秒 与上一个冲突&lt;/p&gt;
+&lt;p&gt;-XX:ParallelGCThreads=n&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220228152400678.png&#34;
+                      alt=&#34;image-20220228152400678&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;响应时间优先&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#响应时间优先&#34;&gt;#&lt;/a&gt; 响应时间优先&lt;/h4&gt;
+&lt;p&gt;concurrent 垃圾回收器工作的同时，其他的用户线程，也能同时进行，也就是用户线程和垃圾回收线程是并发执行，而 parallel 是多个垃圾回收器并行运行，在此期间，不允许用户工作线程继续运行，stop the world&lt;/p&gt;
+&lt;p&gt;-XX:+UseConcMarkSweepGC  基于标记清除算法的垃圾回收器并且是并发的 concurrent (并发) 老年代 有时候会发生并发失败的问题，就会采取补救的措施，退化到 SerialOld 单线程的垃圾回收器&lt;/p&gt;
+&lt;p&gt;-XX:+UseParNewGC 	复制算法 新生代&lt;/p&gt;
+&lt;p&gt;-XX:ParallelGCThreads=n ~ -XX:ConcThreads=threads n/4&lt;/p&gt;
+&lt;p&gt;-XX:CMSInitiatingOccupancyFraction=percent 执行 CMS 的内存占比 比如 80 当老年代的内存占用达到 80% 时就执行一次垃圾回收，这样可以预留一些空间给浮动垃圾来用。默认值是 65%&lt;/p&gt;
+&lt;p&gt;-XX:+CMSScavengeBeforeRemark 在重新标记之前，对新生代进行一次垃圾回收，减轻重新标记的压力&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220228160055673.png&#34;
+                      alt=&#34;image-20220228160055673&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;因为是基于标记和清除算法，可以可能产生比较多的内存碎片，这样的话，就会造成，将来 Minor GC 不足，结果老年代过多，GC 也不足，就会造成并发失败，CMS 的垃圾回收器就不能正常操作，这个时候，垃圾回收器就会退化为 SerialOld 串行化的垃圾回收，做一些整理，碎片变少了，才能继续操作&lt;/p&gt;
+&lt;h4 id=&#34;g1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#g1&#34;&gt;#&lt;/a&gt; G1&lt;/h4&gt;
+&lt;p&gt;定义：Garbage First&lt;/p&gt;
+&lt;p&gt;使用场景&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同时注重吞吐量（Throught）和低延迟（Low latency），默认的暂停目标的是 200ms&lt;/li&gt;
+&lt;li&gt;超大堆内存，会将堆划分为多个大小相等的 Region&lt;/li&gt;
+&lt;li&gt;整体上是标记 + 整理算法，两个区域之间是复制算法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相关 JVM 参数&lt;/p&gt;
+&lt;p&gt;-XX:+UseG1GC&lt;/p&gt;
+&lt;p&gt;-XX:G1HeapRegionSize=size&lt;/p&gt;
+&lt;p&gt;-XX:MaxGCPauseMillis=time&lt;/p&gt;
+&lt;h5 id=&#34;1垃圾回收阶段&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1垃圾回收阶段&#34;&gt;#&lt;/a&gt; 1) 垃圾回收阶段&lt;/h5&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301083352858.png&#34;
+                      alt=&#34;image-20220301083352858&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;2young-collection&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#2young-collection&#34;&gt;#&lt;/a&gt; 2)Young Collection&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;会 STW&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301083706505.png&#34;
+                      alt=&#34;image-20220301083706505&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;垃圾回收时，会把幸存对象复制进幸存区&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301083804132.png&#34;
+                      alt=&#34;image-20220301083804132&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;当幸存区内存不足时，会再次触发垃圾回收，会将寿命达到阈值的对象放进老年代，寿命不够的会复制进另一个幸存区&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301084022984.png&#34;
+                      alt=&#34;image-20220301084022984&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;3young-collection-cm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#3young-collection-cm&#34;&gt;#&lt;/a&gt; 3)Young Collection + CM&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;在 Young GC 时会进行 GC Roots 的初始标记&lt;/li&gt;
+&lt;li&gt;老年代占用比例达到阈值时，进行并发标记（不会 STW），由下面的 JVM 参数决定
+&lt;ul&gt;
+&lt;li&gt;``-XX:InitiatingHeapOccupancyPercent=percent （默认 45%）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301084507087.png&#34;
+                      alt=&#34;image-20220301084507087&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;4mixed-collection&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#4mixed-collection&#34;&gt;#&lt;/a&gt; 4)Mixed Collection&lt;/h5&gt;
+&lt;p&gt;会对 E、S、O 进行全面的垃圾回收&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最终标记（Remark）会 STW&lt;/li&gt;
+&lt;li&gt;拷贝存活（Evacuation）会 STW&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;会将新生代存活的对象复制进幸存区，幸存区达到寿命阈值的会进入老年代，幸存区寿命没有达到阈值的，复制进入另一个幸存区，若时间足够，即是否达到 &lt;code&gt;-XX:MaxGCPauseMillis=ms&lt;/code&gt; ，若没有达到，则全部老年代的幸存对象进行复制进新的老年代中，否则，只选取部分回收价值最高的老年代进行回收和复制，一方面是为了保存存货对象，另一方面是为了减少内存碎片&lt;/p&gt;
+&lt;p&gt;STW 是因为并发标记时，用户线程还在运行，可能会改变一些对象的引用或者产生新的垃圾，对并发标记的最终结果产生影响，所以在最终标记时需要 STW&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301085135007.png&#34;
+                      alt=&#34;image-20220301085135007&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;5full-gc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#5full-gc&#34;&gt;#&lt;/a&gt; 5)Full GC&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;SerialGC
+&lt;ul&gt;
+&lt;li&gt;新生代内存不足时发生的垃圾收集 - minor gc&lt;/li&gt;
+&lt;li&gt;老年代内存不足时发生的垃圾收集 - full gc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ParallelGC
+&lt;ul&gt;
+&lt;li&gt;新生代内存不足时发生的垃圾收集 - minor gc&lt;/li&gt;
+&lt;li&gt;老年代内存不足时发生的垃圾收集 - full gc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CMS
+&lt;ul&gt;
+&lt;li&gt;新生代内存不足时发生的垃圾收集 - minor gc&lt;/li&gt;
+&lt;li&gt;老年代内存不足时
+&lt;ul&gt;
+&lt;li&gt;如果并发收集没有失败（也就是垃圾回收后，内存足够时），那么就是并发收集&lt;/li&gt;
+&lt;li&gt;如果并发收集失败（也就是垃圾回收后，内存碎片严重，内存不足时），那么 CMS 回收器会退化成 Serial GC 使用标记整理算法，对内存碎片进行整理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;G1
+&lt;ul&gt;
+&lt;li&gt;新生代内存不足时发生的垃圾收集 - minor gc&lt;/li&gt;
+&lt;li&gt;老年代内存不足时
+&lt;ul&gt;
+&lt;li&gt;如果垃圾回收的效率大于用户线程产生垃圾的效率，那么使用的是并发收集&lt;/li&gt;
+&lt;li&gt;如果垃圾回收的效率小于用户线程产生垃圾的效率，那么 G1 回收器退化为 Serial GC 使用标记 - 整理算法对内存碎片进行整理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;6young-collection跨代引用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#6young-collection跨代引用&#34;&gt;#&lt;/a&gt; 6) Young Collection 跨代引用&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;新生代回收的跨代引用（老年代引用新生代）问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在垃圾回收时，会将存活对象复制进幸存区，但是有一些新生代的根对象是来自老年代的，老年代中存活的对象对比较多，如果要遍历整个老年代去找这个根对象，效率是非常低的，因此采用卡表的技术 Card Table，把老年代的区域再进行一次细分，分成一个个的卡，每一个卡是 512k，如果老年代其中有一个对象引用了新生代的对象，就把这个卡标记为脏卡， 这样的话，就不用去找整个老年代，只需要去找脏卡的区域即可，减少搜索范围，提高扫描根对象的效率&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301092711562.png&#34;
+                      alt=&#34;image-20220301092711562&#34;
+                &gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;卡表与 Remember Set
+&lt;ul&gt;
+&lt;li&gt;在新生代这边有一个 Remember Set 记录从外部对新生代的引用，即脏卡&lt;/li&gt;
+&lt;li&gt;根据 Remember Set 知道有哪些脏卡，再到脏卡去遍历 GC Roots，减少了 GC Roots 的遍历时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;在引用变更时，通过写屏障，异步的线程去完成脏卡的更新操作
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;post-write barrier + dirty card queue&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;concurrent refinement threads&lt;/code&gt;  更新 Remember Set&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301133805597.png&#34;
+                      alt=&#34;image-20220301133805597&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;7remark&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#7remark&#34;&gt;#&lt;/a&gt; 7)Remark&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pre-write barrier + satb_mark_queue&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在并发标记的过程中，对已经标记的对象会加上一个写屏障，当在并发标记之后，用户线程更改了这个对象的引用，就会触发写屏障，将这个对象放入 &lt;code&gt;satb_mark_queue&lt;/code&gt;  队列，当重新标记时，会对这个队列的对象进行重行检测&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301140303919.png&#34;
+                      alt=&#34;image-20220301140303919&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220301140328043.png&#34;
+                      alt=&#34;image-20220301140328043&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;8jdk8u20字符串去重&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#8jdk8u20字符串去重&#34;&gt;#&lt;/a&gt; 8) JDK8u20 字符串去重&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：节省大量内存&lt;/li&gt;
+&lt;li&gt;缺点：略微多占用了 cpu 时间，新生代回收时间略微增加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;-XX:+UseStringDeduplication&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;s1&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;String&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;abc&amp;quot;&lt;/span&gt;); &lt;span class=&#34;comment&#34;&gt;//char[]&amp;#123;&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;s1&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;String&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;abc&amp;quot;&lt;/span&gt;); &lt;span class=&#34;comment&#34;&gt;//char[]&amp;#123;&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;将所有新分配的字符串放入一个队列&lt;/li&gt;
+&lt;li&gt;当新生代回收时，G1 并发检查是否有字符串重复&lt;/li&gt;
+&lt;li&gt;如果他们的值一样，让他们引用同一个 char []&lt;/li&gt;
+&lt;li&gt;注意，与 &lt;code&gt;String.intern()&lt;/code&gt;  不一样
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;String.intern()&lt;/code&gt;  关注的是字符串对象&lt;/li&gt;
+&lt;li&gt;而字符串去重关注的是 char []&lt;/li&gt;
+&lt;li&gt;在 JVM 内部，使用了不同的字符串表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果他们的值一样，让他们引用同一个 char []，那么两个字符串对象 == 是否为 true?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;还是为 false，但是这里又说指向了同一个 char [] 是什么意思呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;观察 String 源码，我们发现，String 对象的值是采用的 char [] 类型的 value 属性，这里所说的指向了同一个 char []，是指两个不同的 String 对象的 value 属性指向了同一个 char []&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;String&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;&lt;span class=&#34;token namespace&#34;&gt;java&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;io&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;/span&gt;Serializable&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Comparable&lt;/span&gt;&lt;span class=&#34;token generics&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;CharSequence&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token comment&#34;&gt;/** The value is used for character storage. */&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;char&lt;/span&gt; value&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;code￼&lt;span class=&#34;token number&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;执行 javac -parameters -d .HelloWorld.java&lt;/p&gt;
+&lt;p&gt;编译为 HelloWorld.class 后是这个样子&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Shell&#34;&gt;&lt;figure class=&#34;iseeu highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;od -t xC HelloWorld.class&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000000 ca fe ba be 00 00 00 34 00 1f 0a 00 06 00 11 09&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000020 00 12 00 13 08 00 14 0a 00 15 00 16 07 00 17 07&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000040 00 18 01 00 06 3c 69 6e 69 74 3e 01 00 03 28 29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000060 56 01 00 04 43 6f 64 65 01 00 0f 4c 69 6e 65 4e&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000100 75 6d 62 65 72 54 61 62 6c 65 01 00 04 6d 61 69&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000120 6e 01 00 16 28 5b 4c 6a 61 76 61 2f 6c 61 6e 67&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000140 2f 53 74 72 69 6e 67 3b 29 56 01 00 10 4d 65 74&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000160 68 6f 64 50 61 72 61 6d 65 74 65 72 73 01 00 04&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000200 61 72 67 73 01 00 0a 53 6f 75 72 63 65 46 69 6c&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000220 65 01 00 0f 48 65 6c 6c 6f 57 6f 72 6c 64 2e 6a&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000240 61 76 61 0c 00 07 00 08 07 00 19 0c 00 1a 00 1b&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000260 01 00 0b 68 65 6c 6c 6f 20 77 6f 72 6c 64 07 00&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000300 1c 0c 00 1d 00 1e 01 00 19 63 6e 2f 77 65 6e 68&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000320 65 39 2f 74 65 78 74 2f 48 65 6c 6c 6f 57 6f 72&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000340 6c 64 01 00 10 6a 61 76 61 2f 6c 61 6e 67 2f 4f&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000360 62 6a 65 63 74 01 00 10 6a 61 76 61 2f 6c 61 6e&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000400 67 2f 53 79 73 74 65 6d 01 00 03 6f 75 74 01 00&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000420 15 4c 6a 61 76 61 2f 69 6f 2f 50 72 69 6e 74 53&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000440 74 72 65 61 6d 3b 01 00 13 6a 61 76 61 2f 69 6f&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000460 2f 50 72 69 6e 74 53 74 72 65 61 6d 01 00 07 70&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000500 72 69 6e 74 6c 6e 01 00 15 28 4c 6a 61 76 61 2f&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000520 6c 61 6e 67 2f 53 74 72 69 6e 67 3b 29 56 00 21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000540 00 05 00 06 00 00 00 00 00 02 00 01 00 07 00 08&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000560 00 01 00 09 00 00 00 1d 00 01 00 01 00 00 00 05&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000600 2a b7 00 01 b1 00 00 00 01 00 0a 00 00 00 06 00&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000620 01 00 00 00 07 00 09 00 0b 00 0c 00 02 00 09 00&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000640 00 00 25 00 02 00 01 00 00 00 09 b2 00 02 12 03&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000660 b6 00 04 b1 00 00 00 01 00 0a 00 00 00 0a 00 02&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000700 00 00 00 09 00 08 00 0a 00 0d 00 00 00 05 01 00&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000720 0e 00 00 00 01 00 0f 00 00 00 02 00 10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;0000735&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;根据 JVM 规范，类文件结构如下&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220304104332861.png&#34;
+                      alt=&#34;image-20220304104332861&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;魔数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#魔数&#34;&gt;#&lt;/a&gt; 魔数&lt;/h4&gt;
+&lt;p&gt;0-3 字节，表示他是否是【class】类型的文件&lt;/p&gt;
+&lt;p&gt;0000000 &lt;span style=&#34;background-color : red&#34;&gt;ca fe ba be&lt;/span&gt; 00 00 00 34 00 23 0a 00 06 00 15 09&lt;/p&gt;
+&lt;h4 id=&#34;版本&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#版本&#34;&gt;#&lt;/a&gt; 版本&lt;/h4&gt;
+&lt;p&gt;4-7 字节，表示类的版本 00 34 (52) 表示 Java8&lt;/p&gt;
+&lt;p&gt;十六进制，34H 等于十进制的 52 ，52 就是 Java8 53 是 Java9&lt;/p&gt;
+&lt;p&gt;0000000 ca fe ba be &lt;span style=&#34;background-color : red&#34;&gt;00 00 00 34&lt;/span&gt;  00 23 0a 00 06 00 15 09&lt;/p&gt;
+&lt;h3 id=&#34;类加载阶段&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#类加载阶段&#34;&gt;#&lt;/a&gt; 类加载阶段&lt;/h3&gt;
+&lt;h4 id=&#34;类加载&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#类加载&#34;&gt;#&lt;/a&gt; 类加载&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;将类的字节码载入方法区中，内部采用 C++ 的 instanceKlass 的描述 java 类，他的重要 field 有：
+&lt;ul&gt;
+&lt;li&gt;_java_mirror 即 java 的类镜像，例如对 String 来说，就是 String.class，作用是把 klass 暴露给 java 使用&lt;/li&gt;
+&lt;li&gt;_super 即父类&lt;/li&gt;
+&lt;li&gt;_fields 即成员变量&lt;/li&gt;
+&lt;li&gt;_methods 即方法&lt;/li&gt;
+&lt;li&gt;_constants 即常量池&lt;/li&gt;
+&lt;li&gt;_class_loader 即类加载器&lt;/li&gt;
+&lt;li&gt;_vtable 虚方法表&lt;/li&gt;
+&lt;li&gt;_itable 接口方法表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;如果这个类还有父类没有加载，先加载父类&lt;/li&gt;
+&lt;li&gt;加载和链接可能是交替运行的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意&lt;/p&gt;
+&lt;p&gt;instanceKlass 这样的【元数据】是存储在方法区（1.8 后的元空间内），但_java_mirror 是存储在堆中的&lt;/p&gt;
+&lt;p&gt;可以通过 hsdb 查看&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220305152956911.png&#34;
+                      alt=&#34;image-20220305152956911&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;连接&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#连接&#34;&gt;#&lt;/a&gt; 连接&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;验证：验证类是否符合 JVM 规范，安全性检查
+&lt;ul&gt;
+&lt;li&gt;用 UE 等支持二进制的编辑器修改 HelloWorld.class 的魔数，在控制台运行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;准备：为 static 变量分配空间，设置默认值
+&lt;ul&gt;
+&lt;li&gt;static 变量在 JDK7 之前存储于 instanceKlass 末尾，从 JDK7 开始，存储于_java_mirror 末尾&lt;/li&gt;
+&lt;li&gt;static 变量分配空间和赋值是两个步骤，分配空间在准备阶段完成，赋值在初始化阶段完成&lt;/li&gt;
+&lt;li&gt;如果 static 变量是 final 的基本类型，那么编译阶段值就确定了，赋值在准备阶段完成&lt;/li&gt;
+&lt;li&gt;如果 static 变量是 final 的，但属于引用类型，那么赋值也会在初始化阶段完成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;解析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解析&#34;&gt;#&lt;/a&gt; 解析&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;将常量池中的符号引用解析为直接引用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;初始化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#初始化&#34;&gt;#&lt;/a&gt; 初始化&lt;/h4&gt;
+&lt;p&gt;&lt;cinit&gt;() V 方法&lt;/p&gt;
+&lt;p&gt;初始化即调用&lt;cinit&gt;() V 方法，虚拟机会保证这个类的【构造方法】的线程安全&lt;/p&gt;
+&lt;h5 id=&#34;发生的时机&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#发生的时机&#34;&gt;#&lt;/a&gt; 发生的时机&lt;/h5&gt;
+&lt;p&gt;概括的说，类初始化是【懒惰的】&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;main 方法所在的类，总会被首先初始化&lt;/li&gt;
+&lt;li&gt;首次访问这个类的静态变量或静态方法时&lt;/li&gt;
+&lt;li&gt;子类初始化，如果父类还没初始化，会引发&lt;/li&gt;
+&lt;li&gt;子类访问父类的静态变量，只会触发父类的初始化&lt;/li&gt;
+&lt;li&gt;Class.forName&lt;/li&gt;
+&lt;li&gt;new 会导致初始化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不会导致类初始化的情况&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问类的 static final 静态常量（基本类型和字符串）不会触发初始化&lt;/li&gt;
+&lt;li&gt;类对象.class 不会触发初始化&lt;/li&gt;
+&lt;li&gt;创建该类的数组不会触发初始化&lt;/li&gt;
+&lt;li&gt;类加载器的 loadClass 方法&lt;/li&gt;
+&lt;li&gt;Class.forName 的参数 2 为 false 时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;类加载器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#类加载器&#34;&gt;#&lt;/a&gt; 类加载器&lt;/h3&gt;
+&lt;p&gt;以 JDK8 为例&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;加载哪的类&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Bootstrap ClassLoader（C++）&lt;/td&gt;
+&lt;td&gt;JAVA_HOME/jre/lib&lt;/td&gt;
+&lt;td&gt;无法直接访问&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Extension ClassLoader&lt;/td&gt;
+&lt;td&gt;JAVA_HOME/jre/lib/ext&lt;/td&gt;
+&lt;td&gt;上级为 Bootstrap，显示为 null&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Application ClassLoader&lt;/td&gt;
+&lt;td&gt;classpath&lt;/td&gt;
+&lt;td&gt;上级为 Extension&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;自定义类加载器&lt;/td&gt;
+&lt;td&gt;自定义&lt;/td&gt;
+&lt;td&gt;上极为 Application&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;启动类加载器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#启动类加载器&#34;&gt;#&lt;/a&gt; 启动类加载器&lt;/h5&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Plaintext&#34;&gt;&lt;figure class=&#34;iseeu highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;java -Xbootclasspath/a:. cn.wenhe9.jvm.t3.load.load5_1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;bootstrap F init&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;null&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-Xbootclasspath&lt;/code&gt;  表示设置 bootclasspath&lt;/li&gt;
+&lt;li&gt;其中 /a:. 表示将当前目录追加至 bootclasspath 之后&lt;/li&gt;
+&lt;li&gt;可以用这个方法替换核心类
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;java  -Xbootclasspath:&amp;lt;new bootclaspath&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;java -Xbootclasspath/a:&amp;lt;追加路径&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;java -Xbootclasspath/p:&amp;lt;追加路径&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;扩展类加载器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#扩展类加载器&#34;&gt;#&lt;/a&gt; 扩展类加载器&lt;/h5&gt;
+&lt;h6 id=&#34;双亲委派模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#双亲委派模式&#34;&gt;#&lt;/a&gt; 双亲委派模式&lt;/h6&gt;
+&lt;p&gt;所谓的双亲委派，就是指调用类加载器的 loadClass 方法时，查找类的规则&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意&lt;/p&gt;
+&lt;p&gt;这里的双亲，翻译为上级似乎更为合适，因为他们没有继承关系&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt; Class&amp;lt;?&amp;gt; loadClass(String name, &lt;span class=&#34;type&#34;&gt;boolean&lt;/span&gt; resolve)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;throws&lt;/span&gt; ClassNotFoundException&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;synchronized&lt;/span&gt; (getClassLoadingLock(name)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// First, check if the class has already been loaded&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        Class&amp;lt;?&amp;gt; c = findLoadedClass(name);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (c == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;type&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;t0&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; System.nanoTime();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (parent != &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    c = parent.loadClass(name, &lt;span class=&#34;literal&#34;&gt;false&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &amp;#125; &lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    c = findBootstrapClassOrNull(name);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125; &lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt; (ClassNotFoundException e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;// ClassNotFoundException thrown if class not found&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;// from the non-null parent class loader&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (c == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;// If still not found, then invoke findClass in order&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;// to find the class.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;type&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;t1&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; System.nanoTime();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                c = findClass(name);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;comment&#34;&gt;// this is the defining class loader; record the stats&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                PerfCounter.getParentDelegationTime().addTime(t1 - t0);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                PerfCounter.getFindClasses().increment();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (resolve) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            resolveClass(c);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; c;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h5 id=&#34;线程上下文类加载器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#线程上下文类加载器&#34;&gt;#&lt;/a&gt; 线程上下文类加载器&lt;/h5&gt;
+&lt;p&gt;我们在使用 JDBC 时，都需要加载 Driver 驱动，不知道你注意没有，不写&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Class.forName(&lt;span class=&#34;string&#34;&gt;&amp;quot;com.mysql.jdbc.Driver&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;也是可以让 com.mysql.jdbc.Driver 正确加载的&lt;/p&gt;
+&lt;p&gt;让我们追踪一下源码：&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;DriverManager&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;//注册驱动的集合&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; CopyOnWriteArrayList&amp;lt;DriverInfo&amp;gt; registeredDrivers = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;CopyOnWriteArrayList&lt;/span&gt;&amp;lt;&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;//初始化驱动&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        loadInitialDrivers();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        println(&lt;span class=&#34;string&#34;&gt;&amp;quot;JDBC DriverManager Initialized&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;先不看别的，看看 DriverManager 的类加载器：&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;System.out.println(DriverManager.class.getClassLoader());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;打印 null，表示他的类加载器是 Bootstrap ClassLoader，会到 JAVA_HOME/jre/lib 下搜索类，但 JAVA_HOME/jre/lib 下显然没有 mysql-connector-java-5.1.47.jar 包，这样问题来了，在 DriverManager 的静态代码块中，怎么能正确的加载 com.mysql.jdbc.Driver 呢？&lt;/p&gt;
+&lt;p&gt;继续看 loadInitialDivers () 方法&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;65&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;loadInitialDrivers&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    String drivers;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        drivers = AccessController.doPrivileged(&lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;PrivilegedAction&lt;/span&gt;&amp;lt;String&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; String &lt;span class=&#34;title function_&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; System.getProperty(&lt;span class=&#34;string&#34;&gt;&amp;quot;jdbc.drivers&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125; &lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt; (Exception ex) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        drivers = &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// If the driver is packaged as a Service Provider, load it.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// Get all the drivers through the classloader&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// exposed as a java.sql.Driver.class service.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// ServiceLoader.load() replaces the sun.misc.Providers()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;//1)使用ServiceLoader机制加载驱动，即SPI&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    AccessController.doPrivileged(&lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;PrivilegedAction&lt;/span&gt;&amp;lt;Void&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; Void &lt;span class=&#34;title function_&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            ServiceLoader&amp;lt;Driver&amp;gt; loadedDrivers = ServiceLoader.load(Driver.class);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            Iterator&amp;lt;Driver&amp;gt; driversIterator = loadedDrivers.iterator();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;comment&#34;&gt;/* Load these drivers, so that they can be instantiated.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * It may be the case that the driver class may not be there&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * i.e. there may be a packaged driver with the service class&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * as implementation of java.sql.Driver but the actual class&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * may be missing. In that case a java.util.ServiceConfigurationError&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * will be thrown at runtime by the VM trying to locate&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * and load the service.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             *&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * Adding a try catch block to catch those runtime errors&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * if driver not available in classpath but it&amp;#x27;s&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             * packaged as service and that service is there in classpath.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;             */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;while&lt;/span&gt;(driversIterator.hasNext()) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    driversIterator.next();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125; &lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt;(Throwable t) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;comment&#34;&gt;// Do nothing&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    println(&lt;span class=&#34;string&#34;&gt;&amp;quot;DriverManager.initialize: jdbc.drivers = &amp;quot;&lt;/span&gt; + drivers);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;//2）使用jdbc.drivers定义的驱动名加载驱动&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (drivers == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt; || drivers.equals(&lt;span class=&#34;string&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    String[] driversList = drivers.split(&lt;span class=&#34;string&#34;&gt;&amp;quot;:&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    println(&lt;span class=&#34;string&#34;&gt;&amp;quot;number of Drivers:&amp;quot;&lt;/span&gt; + driversList.length);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (String aDriver : driversList) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            println(&lt;span class=&#34;string&#34;&gt;&amp;quot;DriverManager.Initialize: loading &amp;quot;&lt;/span&gt; + aDriver);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;comment&#34;&gt;//这里的CLassloader.getSystemClassLoader()就是应用程序类加载器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            Class.forName(aDriver, &lt;span class=&#34;literal&#34;&gt;true&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    ClassLoader.getSystemClassLoader());&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125; &lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt; (Exception ex) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            println(&lt;span class=&#34;string&#34;&gt;&amp;quot;DriverManager.Initialize: load failed: &amp;quot;&lt;/span&gt; + ex);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;因为 JDK 在某些时候需要打破双亲委派的模式，就会调用应用程序类加载器去加载，否则一些类是找不到的&lt;/p&gt;
+&lt;p&gt;再看 1)，他就是大名鼎鼎的 Service Provider Interface（SPI）&lt;/p&gt;
+&lt;p&gt;约定如下，在 jar 包的 META-INF/services 包下，以接口权限定名为文件，文件内容是实现类内容&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220306085831834.png&#34;
+                      alt=&#34;image-20220306085831834&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;这样可以使用&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ServiceLoader&amp;lt;接口类型&amp;gt; allImpls = ServiceLoader.load(接口类型.class);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Iterator&amp;lt;接口类型&amp;gt; iter = allImpls.iterator();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;while&lt;/span&gt;(iter.hasNext())&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;	iter.hasNext();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;来得到实现类，体现的是【面向接口编程 + 解耦】的思想，在下面的一些框架中运用了此思想：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;JDBC&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Servlet 初始化容器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dubbo （对 SPI 进行了扩展）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接着看 ServiceLoader.load 方法&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &amp;lt;S&amp;gt; ServiceLoader&amp;lt;S&amp;gt; &lt;span class=&#34;title function_&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(Class&amp;lt;S&amp;gt; service)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;//获取线程上下文类加载器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;type&#34;&gt;ClassLoader&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;cl&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; Thread.currentThread().getContextClassLoader();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; ServiceLoader.load(service, cl);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;线程上下文类加载是当前线程使用的类加载器，默认就是应用程序类加载器，他内部又是由 Class.forName 调用了线程上下文类加载器完成类加载，具体代码在 ServiceLoader 的内部类 LazyIterator 中：&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; S &lt;span class=&#34;title function_&#34;&gt;nextService&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (!hasNextService())&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;throw&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;NoSuchElementException&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;cn&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; nextName;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            nextName = &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            Class&amp;lt;?&amp;gt; c = &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                c = Class.forName(cn, &lt;span class=&#34;literal&#34;&gt;false&lt;/span&gt;, loader);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125; &lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt; (ClassNotFoundException x) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                fail(service,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                     &lt;span class=&#34;string&#34;&gt;&amp;quot;Provider &amp;quot;&lt;/span&gt; + cn + &lt;span class=&#34;string&#34;&gt;&amp;quot; not found&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (!service.isAssignableFrom(c)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                fail(service,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                     &lt;span class=&#34;string&#34;&gt;&amp;quot;Provider &amp;quot;&lt;/span&gt; + cn  + &lt;span class=&#34;string&#34;&gt;&amp;quot; not a subtype&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;type&#34;&gt;S&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; service.cast(c.newInstance());&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                providers.put(cn, p);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; p;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125; &lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt; (Throwable x) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                fail(service,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                     &lt;span class=&#34;string&#34;&gt;&amp;quot;Provider &amp;quot;&lt;/span&gt; + cn + &lt;span class=&#34;string&#34;&gt;&amp;quot; could not be instantiated&amp;quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                     x);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;throw&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Error&lt;/span&gt;();          &lt;span class=&#34;comment&#34;&gt;// This cannot happen&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h5 id=&#34;自定义类加载器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#自定义类加载器&#34;&gt;#&lt;/a&gt; 自定义类加载器&lt;/h5&gt;
+&lt;p&gt;问问自己，什么时候需要自定义类加载器&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;想加载非 classpath 随意路径中的类文件&lt;/li&gt;
+&lt;li&gt;都是通过接口来使用实现，希望解耦，常用在框架设计&lt;/li&gt;
+&lt;li&gt;这些类予以隔离，不同应用的同类名都可以加载，不冲突，常见于 tomcat 容器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;继承 classLoader 父类&lt;/li&gt;
+&lt;li&gt;要遵从双亲委派的机制，重写 findClass 方法
+&lt;ul&gt;
+&lt;li&gt;注意不是重谢 loadClass 方法，否则不会走双亲委派机制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;读取类文件的字节码&lt;/li&gt;
+&lt;li&gt;调用父类的 defineClass 方法来加载类&lt;/li&gt;
+&lt;li&gt;使用者调用该类加载器的 loadClass 方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Load7&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;throws&lt;/span&gt; ClassNotFoundException &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;MyClassLoader&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;classLoader&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;MyClassLoader&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        Class&amp;lt;?&amp;gt; c1 = classLoader.loadClass(&lt;span class=&#34;string&#34;&gt;&amp;quot;MapImpl1&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        Class&amp;lt;?&amp;gt; c2 = classLoader.loadClass(&lt;span class=&#34;string&#34;&gt;&amp;quot;MapImpl1&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        System.out.println(c1 == c2); &lt;span class=&#34;comment&#34;&gt;//true 第一次类加载会放在自定义的类加载器的缓存中，下次在调用在缓存中能找到，就不会重复加载了&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;MyClassLoader&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;classLoader2&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;MyClassLoader&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        Class&amp;lt;?&amp;gt; c3 = classLoader2.loadClass(&lt;span class=&#34;string&#34;&gt;&amp;quot;MapImpl1&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        System.out.println(c1 == c3); &lt;span class=&#34;comment&#34;&gt;//false 包名类名相同，而且类加载器也是同一个，才能说这两个类是完全一致的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;MyClassLoader&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ClassLoader&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;meta&#34;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;protected&lt;/span&gt; Class&amp;lt;?&amp;gt; findClass(String name) &lt;span class=&#34;keyword&#34;&gt;throws&lt;/span&gt; ClassNotFoundException &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;string&#34;&gt;&amp;quot;/usr/local/lib&amp;quot;&lt;/span&gt; + name + &lt;span class=&#34;string&#34;&gt;&amp;quot;.class&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;type&#34;&gt;ByteArrayOutputStream&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;os&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ByteArrayOutputStream&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            Files.copy(Paths.get(path), os);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;comment&#34;&gt;//得到字节数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;type&#34;&gt;byte&lt;/span&gt;[] bytes = os.toByteArray();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;comment&#34;&gt;//byte[] -&amp;gt; *.class&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; defineClass(name, bytes, &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;, bytes.length);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125; &lt;span class=&#34;keyword&#34;&gt;catch&lt;/span&gt; (IOException e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            e.printStackTrace();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;throw&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;ClassNotFoundException&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;类文件未找到&amp;quot;&lt;/span&gt;, e);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h2 id=&#34;运行期优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#运行期优化&#34;&gt;#&lt;/a&gt; 运行期优化&lt;/h2&gt;
+&lt;h3 id=&#34;即时编译&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#即时编译&#34;&gt;#&lt;/a&gt; 即时编译&lt;/h3&gt;
+&lt;h4 id=&#34;分层编译&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#分层编译&#34;&gt;#&lt;/a&gt; 分层编译&lt;/h4&gt;
+&lt;p&gt;（TieredCompilation）&lt;/p&gt;
+&lt;p&gt;JVM 将执行状态分成了五个层次：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0 层，解释执行（Interpreter）&lt;/li&gt;
+&lt;li&gt;1 层，使用 C1 即时编译器编译执行（不带 profiling）&lt;/li&gt;
+&lt;li&gt;2 层，使用 C1 即时编译器编译执行（带基本的 profiling）&lt;/li&gt;
+&lt;li&gt;3 层， 使用 C1 即时编译器编译执行（带完全的 profiling）&lt;/li&gt;
+&lt;li&gt;4 层，使用 C2 即时编译器编译执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;profiling 是指在运行过程中，收集一些程序执行状态的数据，例如【方法的调用次数】，【循环的会边次数】等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;即时编译器（JIT）与解释器的区别
+&lt;ul&gt;
+&lt;li&gt;解释器是将字节码解释为机器码，下次即使遇到相同的字节码，仍会执行重复的解释&lt;/li&gt;
+&lt;li&gt;JIT 是将一些字节码编译为机器码，并存入 Code Cache，下次遇到相同的代码，直接执行，无需再编译&lt;/li&gt;
+&lt;li&gt;解释器是将字节码解释为针对所有平台都通用的机器码&lt;/li&gt;
+&lt;li&gt;JIT 行根据平台类型，生成平台特定的机器码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于占据大部分的不常用的代码，我们无需耗费时间将其编译成机器码，而是采用解释执行的方试运行；另一方面，对于近战小部分的热点代码，我们则可以将其编译成机器码，以达到理想的运行速度。执行效率上简单比较一下 Interpreter &amp;lt; C1 &amp;lt; C2，总的目标是发现热点代码（hotspot 名称的由来），优化之&lt;/p&gt;
+&lt;p&gt;逃逸分析：发现新建的对象是否逃逸，可以使用 &lt;code&gt;-XX:DoEscapeAnalysis&lt;/code&gt;  关闭&lt;/p&gt;
+&lt;h3 id=&#34;方法内联&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#方法内联&#34;&gt;#&lt;/a&gt; 方法内联&lt;/h3&gt;
+&lt;p&gt;（Inlining）&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;square&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(&lt;span class=&#34;keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; i)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; i * i;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;System.out.println(square(&lt;span class=&#34;number&#34;&gt;9&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;如果发现 square 是热点方法，并且长度不太长时，会进行内联，所谓的内联就是把方法内代码拷贝、黏贴到调用者的位置&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;System.out.println(&lt;span class=&#34;number&#34;&gt;9&lt;/span&gt; * &lt;span class=&#34;number&#34;&gt;9&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;还能进行常量折叠（constant folding）得到优化&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;System.out.println(&lt;span class=&#34;number&#34;&gt;81&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;-XX:+UnlockDiagnosticVMoptions -XX:+PrintInlining&lt;/code&gt;  打印针对哪些方法使用了内联&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-XX:CompileCommand=donotinline,*JIT2.square&lt;/code&gt;  禁止内联，后面是使用通配符禁止哪些方法的内联&lt;/p&gt;
+&lt;h3 id=&#34;字段优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字段优化&#34;&gt;#&lt;/a&gt; 字段优化&lt;/h3&gt;
+&lt;p&gt;尽可能使用局部变量而不是成员变量，减少循环时查询成员变量的次数，提高效率&lt;/p&gt;
+&lt;h3 id=&#34;反射优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#反射优化&#34;&gt;#&lt;/a&gt; 反射优化&lt;/h3&gt;
+&lt;p&gt;默认使用 DelegatingMethodAccessorImpl 调用 NativeMethodAccessorImpl 的 invoke 方法，在调用本地方法 invoke0 进行反射方法调用&lt;/p&gt;
+&lt;p&gt;当某一个方法反射调用达到 15 次时，会再 NativeMethodAccessorImpl 的 invoke 方法根据调用方法的信息生成一个继承自 MethodAccessorImpl 的 MethodAccessor，并赋值给 DelegatingMethodAccessorImpl&lt;/p&gt;
+&lt;p&gt;当之后的该方法的反射调用触发时，就会调用生成的这个 MethodAccessor，在这个方法的 invoke 中，会直接调用该方法而不用再去调用本地方法&lt;/p&gt;
+&lt;h2 id=&#34;内存模型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#内存模型&#34;&gt;#&lt;/a&gt; 内存模型&lt;/h2&gt;
+&lt;h3 id=&#34;java内存模型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#java内存模型&#34;&gt;#&lt;/a&gt; java 内存模型&lt;/h3&gt;
+&lt;p&gt;简单地说，JMM 定义了一套在多线程读写共享数据时（成员变量和数组）时，对数据的可见性、有序性和原子性的规则和保障&lt;/p&gt;
+&lt;h4 id=&#34;原子性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#原子性&#34;&gt;#&lt;/a&gt; 原子性&lt;/h4&gt;
+&lt;p&gt;问题提出：两个线程对初始值为 0 的静态变量一个做自增，一个做自减，各做 5000 次，结果是 0 吗？&lt;/p&gt;
+&lt;h5 id=&#34;问题分析&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#问题分析&#34;&gt;#&lt;/a&gt; 问题分析&lt;/h5&gt;
+&lt;p&gt;以上的结果可能是正数、负数、零。为什么呢？因为 Java 中对静态变量的自增、自减并不是原子操作&lt;/p&gt;
+&lt;p&gt;例如对于 i++ 而言（i 为静态变量），实际会产生的 JVM 字节码指令：&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;getstatic		i &lt;span class=&#34;comment&#34;&gt;//获取静态变量i的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;iconst_1		  &lt;span class=&#34;comment&#34;&gt;//准备常量1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;iadd			  &lt;span class=&#34;comment&#34;&gt;//自增&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;putstatic		i &lt;span class=&#34;comment&#34;&gt;//将修改后的值存入静态变量i&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;而对应 i–也是类似&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;getstatic		i &lt;span class=&#34;comment&#34;&gt;//获取静态变量i的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;iconst_1		  &lt;span class=&#34;comment&#34;&gt;//准备常量1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;isub			  &lt;span class=&#34;comment&#34;&gt;//自减&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;putstatic		i &lt;span class=&#34;comment&#34;&gt;//将修改后的值存入静态变量i&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;而 Java 的内存模型如下，完成静态变量的自增、自减需要在主存和线程中进行数据交换&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220306143623411.png&#34;
+                      alt=&#34;image-20220306143623411&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;如果是单线程以上 8 行代码是顺序执行（不会交错），没有问题&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;getstatic		i &lt;span class=&#34;comment&#34;&gt;//获取静态变量i的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;iconst_1		  &lt;span class=&#34;comment&#34;&gt;//准备常量1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;iadd			  &lt;span class=&#34;comment&#34;&gt;//自增&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;putstatic		i &lt;span class=&#34;comment&#34;&gt;//将修改后的值存入静态变量i&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;getstatic		i &lt;span class=&#34;comment&#34;&gt;//获取静态变量i的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;iconst_1		  &lt;span class=&#34;comment&#34;&gt;//准备常量1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;isub			  &lt;span class=&#34;comment&#34;&gt;//自减&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;putstatic		i &lt;span class=&#34;comment&#34;&gt;//将修改后的值存入静态变量i&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;但在多线程下这 8 行代码可能交错运行&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220306143959628.png&#34;
+                      alt=&#34;image-20220306143959628&#34;
+                &gt;&lt;/p&gt;
+&lt;h5 id=&#34;解决方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解决方法&#34;&gt;#&lt;/a&gt; 解决方法&lt;/h5&gt;
+&lt;p&gt;synchronized (同步关键字)&lt;/p&gt;
+&lt;p&gt;语法&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;synchronized&lt;/span&gt;(对象)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    要作为原子操作的代码&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;TestReflect&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;obj&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;throws&lt;/span&gt; InterruptedException &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;Thread&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;t1&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Thread&lt;/span&gt;(() -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;synchronized&lt;/span&gt; (obj)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (&lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;; j &amp;lt; &lt;span class=&#34;number&#34;&gt;5000&lt;/span&gt;; j++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                        i++;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;type&#34;&gt;Thread&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;t2&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Thread&lt;/span&gt;(() -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;synchronized&lt;/span&gt; (obj)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (&lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;; j &amp;lt; &lt;span class=&#34;number&#34;&gt;5000&lt;/span&gt;; j++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                        i--;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        t1.start();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        t2.start();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        t1.join();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        t2.join();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        System.out.println(i);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h4 id=&#34;可见性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可见性&#34;&gt;#&lt;/a&gt; 可见性&lt;/h4&gt;
+&lt;h5 id=&#34;退不出的循环&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#退不出的循环&#34;&gt;#&lt;/a&gt; 退不出的循环&lt;/h5&gt;
+&lt;p&gt;先来看一个现象，main 线程的 run 变量的修改对于 t 线程不可见，导致了 t 线程无法停止&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;boolean&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;run&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;true&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(String[] args)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;type&#34;&gt;Thread&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Thread&lt;/span&gt;(() -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;while&lt;/span&gt;(run)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            ....&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    t.start();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    Thread.sleep(&lt;span class=&#34;number&#34;&gt;1000&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    run = &lt;span class=&#34;literal&#34;&gt;false&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;//线程t不会如预想的停下来&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;为什么呢？分析一下&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始状态，t 线程刚刚开始从主内存读取了 run 的值到工作内存
+&lt;ul&gt;
+&lt;li&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220306150058186.png&#34;
+                      alt=&#34;image-20220306150058186&#34;
+                &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;因为 t 线程少频繁的从主内存中读取 run 的值，JIT 编辑器会将 run 的值缓存至自己工作内存中的高速缓存中，减少对主存中 run 的访问，提高效率
+&lt;ul&gt;
+&lt;li&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220306150235738.png&#34;
+                      alt=&#34;image-20220306150235738&#34;
+                &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;1 秒之后，main 线程修改了 run 的值，并同步至主存，而 t 是从自己工作内存中的高速缓存中读取这个变量的值，结果永远是旧值
+&lt;ul&gt;
+&lt;li&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220306150432081.png&#34;
+                      alt=&#34;image-20220306150432081&#34;
+                &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;解决办法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#解决办法&#34;&gt;#&lt;/a&gt; 解决办法&lt;/h5&gt;
+&lt;p&gt;volatile（易变关键字）&lt;/p&gt;
+&lt;p&gt;他可以用来修饰成员变量和静态成员变量，他可以避免线程从自己的工作内存缓存中查找变量的值，必须到主存中获取他的值，线程操作 volatile 变量都是直接操作内存&lt;/p&gt;
+&lt;h5 id=&#34;可见性-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#可见性-2&#34;&gt;#&lt;/a&gt; 可见性&lt;/h5&gt;
+&lt;p&gt;前面例子体现的实际就是可见性，他保证的是在多个线程之间，一个线程对 volatile 变量的修改对另一个线程可见，不能保证原子性，仅用在一个写线程，多个读线程的情况&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意&lt;/p&gt;
+&lt;p&gt;synchronized 语句块既可以保证代码块的原子性，也同时保证代码内变量的可见性，但缺点是 sychronized 是属于重量级操作，性能相对较低&lt;/p&gt;
+&lt;p&gt;如果在前面示例的死循环中加入 System.out.println () 会发现即使不加 volatile 修饰符，线程 t 也能正确看到 run 变量的修改了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;有序性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#有序性&#34;&gt;#&lt;/a&gt; 有序性&lt;/h4&gt;
+&lt;p&gt;可能出现指令重排，使用 volatile 修饰变量&lt;/p&gt;
+&lt;h4 id=&#34;happens-before&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#happens-before&#34;&gt;#&lt;/a&gt; happens-before&lt;/h4&gt;
+&lt;p&gt;happens-before 规定了哪些写操作对其他线程的读操作可见，他是可见性与有序性嗯对一套规则总结&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;线程解锁 m 之前对变量的写，对于接下来对 m 加锁的其他线程对该变量的读可见&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Object&lt;/span&gt; m &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Object&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;synchronized&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;m&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        x &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;t1&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;synchronized&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;m&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token class-name&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;out&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;t2&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;code￼&lt;span class=&#34;token number&#34;&gt;29&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;线程 start 对变量的写，对该线程开始后对该变量的读可见&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;x &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token class-name&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;out&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;t1&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;code￼&lt;span class=&#34;token number&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;线程 t1 打断 t2（interrupt）前对变量的写，对于其他线程得知 t2 被打断后对变量的读可见（通过 t2 的 interrupted () 或 t2.isInterrupted ()）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;figcaption data-lang=&#34;java&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;DemoApplicationTests&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; x&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt; args&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt; t2 &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token boolean&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;currentThread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;isInterrupted&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                    &lt;span class=&#34;token class-name&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;out&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                    &lt;span class=&#34;token keyword&#34;&gt;break&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        t2&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;-&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                &lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;sleep&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;InterruptedException&lt;/span&gt; e&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                e&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;printStackTrace&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            x &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            t2&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;interrupt&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;t2&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;isInterrupted&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token class-name&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;yield&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token class-name&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;out&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;x&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;code￼&lt;span class=&#34;token number&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;获取共享变量时，为了保证该变量的可见性，需要使用 volatile 修饰，结合 CAS 和 volatile 可以实现无锁并发，适用于竞争不激烈，多核 CPU 的场景下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;因为没有使用 sychronzied，所以线程不会陷入阻塞，这是效率提升的因素之一&lt;/li&gt;
+&lt;li&gt;但如果竞争激烈，可以想到尝试必然频繁发生，反而效率会受影响&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;CAS 底层依赖于一个 UnSafe 类来直接调用操作系统底层的 CAS 指令，下面是直接使用 Unsafe 类对象进行线程安全保护的一个例子&lt;/p&gt;
+&lt;h4 id=&#34;乐观锁和悲观锁&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#乐观锁和悲观锁&#34;&gt;#&lt;/a&gt; 乐观锁和悲观锁&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;CAS 是基于乐观锁的思想：最乐观的估计，不怕别的线程来修改共享变量，就算改了也没关系，我吃亏点再重试呗&lt;/li&gt;
+&lt;li&gt;synchroized 是基于悲观锁的思想：最悲观的估计，得防着其他线程来修改共享变量，我上了锁你们都别想改，我改完了解开锁，你们才有机会&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;原子操作类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#原子操作类&#34;&gt;#&lt;/a&gt; 原子操作类&lt;/h4&gt;
+&lt;p&gt;juc（java.util.concurrent）中提供了原子操作类，可以提供线程安全的操作，例如 AtomicInteger、AtomicBoolean 等，他们底层就是采用 CAS 技术 + volatile 实现的&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/image-20220306171823369.png&#34;
+                      alt=&#34;image-20220306171823369&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;synchronized优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#synchronized优化&#34;&gt;#&lt;/a&gt; synchronized 优化&lt;/h3&gt;
+&lt;p&gt;Java HotSpot 虚拟机中，每个对象都有对象头（包括 class 指针和 Mark Word）。Mark Word 平时存储这个对象的哈希吗、分代年龄，当加锁时，这些信息就根据情况被替换为 标记位、线程锁记录指针、重量级锁指针、线程 ID 等内容&lt;/p&gt;
+&lt;h4 id=&#34;轻量级锁&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#轻量级锁&#34;&gt;#&lt;/a&gt; 轻量级锁&lt;/h4&gt;
+&lt;p&gt;如果一个对象虽然有多线程访问，但多线程访问的时间是错开的（也就是没有竞争），那么可以使用轻量级锁&lt;/p&gt;
+&lt;h4 id=&#34;锁膨胀&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#锁膨胀&#34;&gt;#&lt;/a&gt; 锁膨胀&lt;/h4&gt;
+&lt;p&gt;如果在尝试加轻量级锁的过程中，CAS 操作无法成功，这时一种情况就是有其他线程为此对象加了轻量级锁（有竞争），这时需要进行锁膨胀，将轻量级的锁变为重量级锁&lt;/p&gt;
+&lt;h4 id=&#34;重量锁&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#重量锁&#34;&gt;#&lt;/a&gt; 重量锁&lt;/h4&gt;
+&lt;p&gt;重量锁竞争的时候，还可以使用自旋来进行优化，如果当前线程自旋成功（即这时候持锁线程已经退出了同步块，释放了锁），这时当前线程就可以避免阻塞&lt;/p&gt;
+&lt;p&gt;在 Java6 之后自旋是自适应的，比如对象刚刚的一次自旋操作成功过，那么认为这次自旋成功的可能性会高，就多自旋几次，反之就少自旋几次甚至不自旋&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自旋会占用 CPU 时间，单核 CPU 自旋就是浪费，多核 CPU 自旋才能发挥优势&lt;/li&gt;
+&lt;li&gt;Java 之后不能控制是否开启自旋功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;偏向锁&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#偏向锁&#34;&gt;#&lt;/a&gt; 偏向锁&lt;/h4&gt;
+&lt;p&gt;轻量级锁在没有竞争时（就自己这个线程），每次重入仍然需要执行 CAS 操作，Java6 中引入了偏向锁开做进一步优化：只有第一次使用 CAS 将线程 ID 设置到对象的 Mark Word 中头，之后发现这个线程 ID 是自己的就表示没有竞争，不用重新 CAS&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;撤销偏向需要将持锁线程升级为轻量级锁，这个过程中所有线程需要暂停（STW）&lt;/li&gt;
+&lt;li&gt;访问对象的 hashCode 也会撤销偏向锁&lt;/li&gt;
+&lt;li&gt;如果对象虽然被多个线程访问，但没有竞争，这时偏向了线程 T1 的对象仍有机会重新偏向 T2，重偏向会重置对象的 ThreadID&lt;/li&gt;
+&lt;li&gt;撤销偏析和重偏向都是批量进行的，以类为单位&lt;/li&gt;
+&lt;li&gt;如果撤销偏向到达某个阈值，整个类的所有对象都会变为不可偏向的&lt;/li&gt;
+&lt;li&gt;可以主动使用 &lt;code&gt;-XX:-UseBiasedLocking&lt;/code&gt;  禁用偏向锁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;其他优化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#其他优化&#34;&gt;#&lt;/a&gt; 其他优化&lt;/h4&gt;
+&lt;h5 id=&#34;减少上锁时间&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#减少上锁时间&#34;&gt;#&lt;/a&gt; 减少上锁时间&lt;/h5&gt;
+&lt;p&gt;同步代码块中尽量短&lt;/p&gt;
+&lt;h5 id=&#34;减少锁的粒度&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#减少锁的粒度&#34;&gt;#&lt;/a&gt; 减少锁的粒度&lt;/h5&gt;
+&lt;p&gt;将一个锁拆分为多个锁提高并发度&lt;/p&gt;
+&lt;h5 id=&#34;锁粗化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#锁粗化&#34;&gt;#&lt;/a&gt; 锁粗化&lt;/h5&gt;
+&lt;p&gt;多次循环进入同步代码块不如把同步代码块内多次循环&lt;/p&gt;
+&lt;p&gt;另外 JVM 可能会做如下优化，把多次 append 的加锁操作粗化为一次（因为我都是对同一个对象加锁，没必要置入多次）&lt;/p&gt;
+&lt;h5 id=&#34;锁消除&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#锁消除&#34;&gt;#&lt;/a&gt; 锁消除&lt;/h5&gt;
+&lt;p&gt;JVM 会进行代码的逃逸分析，例如某个加锁对象是方法内局部变量，不会被其他线程锁访问到，这时候就会被即时编译器忽略掉所有同步操作&lt;/p&gt;
+&lt;h5 id=&#34;读写分离&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#读写分离&#34;&gt;#&lt;/a&gt; 读写分离&lt;/h5&gt;
+&lt;p&gt;CopyOnWriteArrayList&lt;/p&gt;
+&lt;p&gt;CopyOnWri&lt;/p&gt;
+</content>
+        <category term="JVM" />
+        <updated>2023-06-06T00:45:23.000Z</updated>
+    </entry>
+</feed>

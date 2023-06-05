@@ -1,0 +1,561 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>玖忆 • Posts by &#34;git&#34; tag</title>
+        <link>https://wait-you.github.io</link>
+        <description>我本微末凡尘、可也心向天空</description>
+        <language>zh-CN</language>
+        <pubDate>Tue, 06 Jun 2023 08:41:10 +0800</pubDate>
+        <lastBuildDate>Tue, 06 Jun 2023 08:41:10 +0800</lastBuildDate>
+        <category>RabbitMQ</category>
+        <category>Android</category>
+        <category>Docker</category>
+        <category>java</category>
+        <category>git</category>
+        <category>JVM</category>
+        <category>es6</category>
+        <category>Java</category>
+        <category>JWT</category>
+        <category>协程</category>
+        <category>MyBatis</category>
+        <category>Kotlin</category>
+        <category>Node.js</category>
+        <category>Python</category>
+        <category>Service Mesh</category>
+        <category>Vue</category>
+        <category>Spring Security</category>
+        <category>Spring Cloud</category>
+        <category>分布式事务</category>
+        <category>排序算法</category>
+        <category>接口幂等性</category>
+        <category>领域驱动设计</category>
+        <category>设计模式</category>
+        <item>
+            <guid isPermalink="true">https://wait-you.github.io/2023/06/06/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+            <title>Git常用命令</title>
+            <link>https://wait-you.github.io/2023/06/06/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+            <category>git</category>
+            <pubDate>Tue, 06 Jun 2023 08:41:10 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;git常用命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#git常用命令&#34;&gt;#&lt;/a&gt; Git 常用命令&lt;/h1&gt;
+&lt;h2 id=&#34;查看版本号&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看版本号&#34;&gt;#&lt;/a&gt; 查看版本号&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git --version&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;清屏&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#清屏&#34;&gt;#&lt;/a&gt; 清屏&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;clear&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;设置签名&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#设置签名&#34;&gt;#&lt;/a&gt; 设置签名&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git config --global &lt;a class=&#34;link&#34;   href=&#34;http://user.name&#34; &gt;user.name &lt;i class=&#34;fa-regular fa-arrow-up-right-from-square fa-sm&#34;&gt;&lt;/i&gt;&lt;/a&gt; “dujinliang”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;设置邮箱&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#设置邮箱&#34;&gt;#&lt;/a&gt; 设置邮箱&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git config --global user.email “&lt;a class=&#34;link&#34;   href=&#34;mailto:1162378922@qq.com&#34; &gt;1162378922@qq.com &lt;i class=&#34;fa-regular fa-arrow-up-right-from-square fa-sm&#34;&gt;&lt;/i&gt;&lt;/a&gt;”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查看设置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看设置&#34;&gt;#&lt;/a&gt; 查看设置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git config --global --list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;切换目录&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#切换目录&#34;&gt;#&lt;/a&gt; 切换目录&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;cd E:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;本地仓库的初始化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#本地仓库的初始化&#34;&gt;#&lt;/a&gt; 本地仓库的初始化&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git init&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;显示文件夹下的文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#显示文件夹下的文件&#34;&gt;#&lt;/a&gt; 显示文件夹下的文件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ll&lt;/li&gt;
+&lt;li&gt;ll -la
+&lt;ul&gt;
+&lt;li&gt;显示隐藏文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;将文件提交到暂存区&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#将文件提交到暂存区&#34;&gt;#&lt;/a&gt; 将文件提交到暂存区&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git add Demo.txt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;将暂存区中的内容提交到本地库&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#将暂存区中的内容提交到本地库&#34;&gt;#&lt;/a&gt; 将暂存区中的内容提交到本地库&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git commit -m “这是我提交的第一个文件” Demo.txt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查看工作区和暂存区的状态&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看工作区和暂存区的状态&#34;&gt;#&lt;/a&gt; 查看工作区和暂存区的状态&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git status&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查看提交的历史记录从近到远&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看提交的历史记录从近到远&#34;&gt;#&lt;/a&gt; 查看提交的历史记录（从近到远）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git log
+&lt;ul&gt;
+&lt;li&gt;到日志过多，会出现分页的效果&lt;/li&gt;
+&lt;li&gt;下一页 ： 空格&lt;/li&gt;
+&lt;li&gt;上一页 ：b&lt;/li&gt;
+&lt;li&gt;到页尾，显示 END&lt;/li&gt;
+&lt;li&gt;退出 ：q&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;git log --pretty=oneline
+&lt;ul&gt;
+&lt;li&gt;在一行中进行展示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;git log --oneline
+&lt;ul&gt;
+&lt;li&gt;在一行进行展示，关键字是简写的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;git reflog
+&lt;ul&gt;
+&lt;li&gt;在一行进行展示，关键字是简写的，有一个回退步数的显示，HEAD@{数字}，即回到当前这个历史版本需要走多少步&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;版本回退&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#版本回退&#34;&gt;#&lt;/a&gt; 版本回退&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git reset --hard 索引号
+&lt;ul&gt;
+&lt;li&gt;本地库指针移动的同时，重置暂存区，重置工作区&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;git reset --mixed 索引号
+&lt;ul&gt;
+&lt;li&gt;本地库的指针移动的同时，重置暂存区，但是工作区不动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;git reset --soft
+&lt;ul&gt;
+&lt;li&gt;本地库指针移动的时候，暂存区和工作区都不动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;删除文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#删除文件&#34;&gt;#&lt;/a&gt; 删除文件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;删除工作区中的文件
+&lt;ul&gt;
+&lt;li&gt;tm  Test.txt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;将删除操作同步到暂存区
+&lt;ul&gt;
+&lt;li&gt;git add Test.txt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;将删除操作同步到本地库
+&lt;ul&gt;
+&lt;li&gt;git commit -m “删除 Text.txt 文件” Test.txt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;找回本地库中删除的文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#找回本地库中删除的文件&#34;&gt;#&lt;/a&gt; 找回本地库中删除的文件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;实际上就是将历史版本切换到刚才添加文件的那个版本即可
+&lt;ul&gt;
+&lt;li&gt;git reset --hard 索引号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;找回暂存区中删除的文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#找回暂存区中删除的文件&#34;&gt;#&lt;/a&gt; 找回暂存区中删除的文件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;删除工作区数据
+&lt;ul&gt;
+&lt;li&gt;rm Test.txt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;同步到缓存区
+&lt;ul&gt;
+&lt;li&gt;git add Test.txt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;恢复暂存区中的数据
+&lt;ul&gt;
+&lt;li&gt;git reset --hard 索引号&lt;/li&gt;
+&lt;li&gt;git reset --hard HEAD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;比较文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#比较文件&#34;&gt;#&lt;/a&gt; 比较文件&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;git 是按照行为单位管理数据，所以删除一行，添加一行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将工作区中的文件和暂存区中的文件进行比较&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git diff [文件名]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多个文件的比对，比较工作区和暂存区中所有的差异&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git diff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;比较暂存区和工作区中的差别、&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git diff [历史版本] [文件名]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;分支&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#分支&#34;&gt;#&lt;/a&gt; 分支&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;同时多个分支可以并发开发，互相不耽误，互相不影响，提高开发效率&lt;/li&gt;
+&lt;li&gt;如果有一个分支功能开发失败，直接删除这个分支就可以了，不会对其他分支产生任何影响&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407154218643.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;h2 id=&#34;查看分支&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看分支&#34;&gt;#&lt;/a&gt; 查看分支&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git branch -v&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建分支&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建分支&#34;&gt;#&lt;/a&gt; 创建分支&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git branch branch01&lt;/li&gt;
+&lt;li&gt;你在哪个分支上，是通过 * 来显示的&lt;/li&gt;
+&lt;li&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407154444325.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;切换分支&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#切换分支&#34;&gt;#&lt;/a&gt; 切换分支&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git checkout branch01&lt;/li&gt;
+&lt;li&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407154509695.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;合并分支&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#合并分支&#34;&gt;#&lt;/a&gt; 合并分支&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;先切换到主方法中&lt;/li&gt;
+&lt;li&gt;git merge branch01
+&lt;ul&gt;
+&lt;li&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407154531941.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查看文件内容&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看文件内容&#34;&gt;#&lt;/a&gt; 查看文件内容&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;cat Test5.txt&lt;/li&gt;
+&lt;li&gt;出现冲突
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在用同一个文件的同一个位置修改&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407154603510.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;经过商议，留下想要的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将工作区中内容添加到暂存区&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407154648468.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后进行 commit 操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407154708513.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查看别名&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看别名&#34;&gt;#&lt;/a&gt; 查看别名&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git remote -v&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创建别名&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#创建别名&#34;&gt;#&lt;/a&gt; 创建别名&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;git remote add 别名 地址&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407154739663.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;fetch&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获取&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;push&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;推送&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;向远程库推送数据&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#向远程库推送数据&#34;&gt;#&lt;/a&gt; 向远程库推送数据&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git push 远程库别名 要推送的分支
+&lt;ul&gt;
+&lt;li&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407160838761.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;从远程库克隆数据&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#从远程库克隆数据&#34;&gt;#&lt;/a&gt; 从远程库克隆数据&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;git clone 远程库的地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;克隆操作可以帮我们完成&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始化本地库&lt;/li&gt;
+&lt;li&gt;将远程库内容完整的克隆到本地&lt;/li&gt;
+&lt;li&gt;替我们创建远程库别名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;加入团队&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#加入团队&#34;&gt;#&lt;/a&gt; 加入团队&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;可以从 GitHub 中 clone 对方的数据，但无法提交，可由对方向自己发送邀请，复制邀请链接，由被邀请者在浏览器中打开同意即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;拉取操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#拉取操作&#34;&gt;#&lt;/a&gt; 拉取操作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;pull 操作，相当于 fetch + merge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;抓取操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#抓取操作&#34;&gt;#&lt;/a&gt; 抓取操作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;git fetch origin master&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在抓取操作执行后，只是将远程库的内容下载到本地，但是工作区中的文件并没有更新，工作区中还是原先的内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;抓取后可以去远程库看看内容是否正确&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407160902432.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;发现内容都正确，就可以进行合并操作了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;合并之前应该将分支切换回来&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407160924479.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进行合并：merge&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407160942142.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;远程库的拉取可以直接利用 pull 命令来完成&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git pull origin master&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;区别&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;fetch  + merge 操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为了保险，慎重&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pull&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;代码简单，省事&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多人共同提交数据时，会出现冲突问题，当一个人提交完成后，另一个人提交时会报错，需要先抓取该数据，对冲突进行处理，再提交，再提交时，git commit “注释信息”, 此处不写文件名&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;跨团队合作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#跨团队合作&#34;&gt;#&lt;/a&gt; 跨团队合作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;https://img-blog.csdnimg.cn/2021040716101181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BlbmFudXQ=,size_16,color_FFFFFF,t_70#pic_center&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;获取远程库地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进行 fork 操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入账号后，复制地址&lt;/li&gt;
+&lt;li&gt;点击 fork 操作&lt;/li&gt;
+&lt;li&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407161030420.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;克隆操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后更改数据，添加到暂存区，然后提交到本地库，然后 push 到远程库&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进行 pull request，等待审核&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进行审核&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以互相留言&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确定通过后，merge 合并&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;免密操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#免密操作&#34;&gt;#&lt;/a&gt; 免密操作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;进入用户主目录中，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cd ~&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;执行命令，生成一个.ssh 目录&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ssh-keygen -t rsa -C GitHub 邮箱&lt;/li&gt;
+&lt;li&gt;C 要大写，邮箱是 GitHub 注册的账号的时候对应的邮箱&lt;/li&gt;
+&lt;li&gt;三次回车确认默认值即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;发现在.ssh 目录下有两个文件&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407161051391.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开 id_rad.pub 文件，将里面的内容进行复制操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;打开 GitHub 账号，找到 settings，ssh and gpg keys，new ssh keys&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/20210407161122503.png&#34;
+                      alt=&#34;在这里插入图片描述&#34;
+                &gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成密钥以后，就可以正常进行 push 操作了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对 ssh 远程地址起别名&lt;/li&gt;
+&lt;li&gt;展示别名&lt;/li&gt;
+&lt;li&gt;添加到暂存区，提交到本地库，然后 push 到远程库（地址用的是 ssh 方式的地址）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;允许不相关历史的合并&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#允许不相关历史的合并&#34;&gt;#&lt;/a&gt; 允许不相关历史的合并&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用于两个仓库有不同的开始点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;–allow -unrelated-histories&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;git pull 地址 master --allow -unrelated-histories&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;i 进入编辑&lt;/li&gt;
+&lt;li&gt;ese 退出编辑，：wq 退出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;push 推送&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git push -u origin master -f&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;这样远程库和本地库就可以交互了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一般在开发中，先 pull 操作，再 push 操作，不会直接进行 push 操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

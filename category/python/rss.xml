@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>玖忆 • Posts by &#34;python&#34; category</title>
+        <link>https://wait-you.github.io</link>
+        <description>我本微末凡尘、可也心向天空</description>
+        <language>zh-CN</language>
+        <pubDate>Tue, 06 Jun 2023 09:03:36 +0800</pubDate>
+        <lastBuildDate>Tue, 06 Jun 2023 09:03:36 +0800</lastBuildDate>
+        <category>RabbitMQ</category>
+        <category>Android</category>
+        <category>Docker</category>
+        <category>java</category>
+        <category>git</category>
+        <category>JVM</category>
+        <category>es6</category>
+        <category>Java</category>
+        <category>JWT</category>
+        <category>协程</category>
+        <category>MyBatis</category>
+        <category>Kotlin</category>
+        <category>Node.js</category>
+        <category>Python</category>
+        <category>Service Mesh</category>
+        <category>Vue</category>
+        <category>Spring Security</category>
+        <category>Spring Cloud</category>
+        <category>分布式事务</category>
+        <category>排序算法</category>
+        <category>接口幂等性</category>
+        <category>领域驱动设计</category>
+        <category>设计模式</category>
+        <item>
+            <guid isPermalink="true">https://wait-you.github.io/2023/06/06/Python/</guid>
+            <title>Python</title>
+            <link>https://wait-you.github.io/2023/06/06/Python/</link>
+            <category>Python</category>
+            <pubDate>Tue, 06 Jun 2023 09:03:36 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;python&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#python&#34;&gt;#&lt;/a&gt; Python&lt;/h1&gt;
+&lt;h2 id=&#34;基础语法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#基础语法&#34;&gt;#&lt;/a&gt; 基础语法&lt;/h2&gt;
+&lt;h3 id=&#34;字面量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字面量&#34;&gt;#&lt;/a&gt; 字面量&lt;/h3&gt;
+&lt;h4 id=&#34;什么是字面量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#什么是字面量&#34;&gt;#&lt;/a&gt; 什么是字面量&lt;/h4&gt;
+&lt;p&gt;字面量：在代码中，被写下来的固定的值，称之为字面量&lt;/p&gt;
+&lt;h4 id=&#34;常见值类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常见值类型&#34;&gt;#&lt;/a&gt; 常见值类型&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210111425899.png&#34;
+                      alt=&#34;image-20221011142529705&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;字符串&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串&#34;&gt;#&lt;/a&gt; 字符串&lt;/h4&gt;
+&lt;p&gt;字符串 (string)，又称文本，是由任意数量的字符如中文、英文、各类符号、数字组成的。所以叫做字符的串。&lt;/p&gt;
+&lt;h3 id=&#34;注释&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#注释&#34;&gt;#&lt;/a&gt; 注释&lt;/h3&gt;
+&lt;h4 id=&#34;注释的概念&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#注释的概念&#34;&gt;#&lt;/a&gt; 注释的概念&lt;/h4&gt;
+&lt;p&gt;注释：在程序代码中对程序代码进行解释说明的文字&lt;/p&gt;
+&lt;p&gt;作用：注释不是程序，不能被执行，只是对程序代码进行解释说明，让别人可以看懂程序代码的作用，能够大大增强程序的可读性。&lt;/p&gt;
+&lt;h4 id=&#34;注释的分类&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#注释的分类&#34;&gt;#&lt;/a&gt; 注释的分类&lt;/h4&gt;
+&lt;p&gt;单行注释：以  &lt;code&gt;#&lt;/code&gt;  开头， &lt;code&gt;#&lt;/code&gt;  右边的所有文字当做说明，而不是真正要执行的程序，起辅助说明作用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;注意：  &lt;code&gt;#&lt;/code&gt; 号和注释内容一般建议以一个空格隔开&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;多行注释：以一对 三个双引号引起来的 (“”&amp;quot; 注释内容 “”) 来解释说明一段代码的作用使用方法&lt;/p&gt;
+&lt;h3 id=&#34;变量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#变量&#34;&gt;#&lt;/a&gt; 变量&lt;/h3&gt;
+&lt;p&gt;变量：在程序运行时，能存储计算结果或能表示值的抽象概念&lt;/p&gt;
+&lt;p&gt;简单来说，变量就是程序在运行时，记录数据用的&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210111440457.png&#34;
+                      alt=&#34;image-20221011144030395&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;数据类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据类型&#34;&gt;#&lt;/a&gt; 数据类型&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;type()&lt;/code&gt;  查询数据的类型&lt;/p&gt;
+&lt;p&gt;变量没有数据类型，但它所存储的数据有类型&lt;/p&gt;
+&lt;h3 id=&#34;数据类型转换&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据类型转换&#34;&gt;#&lt;/a&gt; 数据类型转换&lt;/h3&gt;
+&lt;h4 id=&#34;常见的转换语句&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常见的转换语句&#34;&gt;#&lt;/a&gt; 常见的转换语句&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210111604356.png&#34;
+                      alt=&#34;image-20221011160411271&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;标识符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#标识符&#34;&gt;#&lt;/a&gt; 标识符&lt;/h3&gt;
+&lt;p&gt;用户在编程的时候所使用一系列名字，用于给变量、类、方法等命名&lt;/p&gt;
+&lt;p&gt;标识符的命名规则主要有三类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内容限定&lt;/li&gt;
+&lt;li&gt;大小写敏感&lt;/li&gt;
+&lt;li&gt;不可使用关键字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;标识符命名中，只允许出现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;英文&lt;/li&gt;
+&lt;li&gt;中文&lt;/li&gt;
+&lt;li&gt;数字&lt;/li&gt;
+&lt;li&gt;下划线 (_)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不推荐使用中文&lt;/p&gt;
+&lt;p&gt;数字不可以开头&lt;/p&gt;
+&lt;h3 id=&#34;运算符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#运算符&#34;&gt;#&lt;/a&gt; 运算符&lt;/h3&gt;
+&lt;h4 id=&#34;算术运算符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#算术运算符&#34;&gt;#&lt;/a&gt; 算术运算符&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210111622356.png&#34;
+                      alt=&#34;image-20221011162253269&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;赋值运算符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#赋值运算符&#34;&gt;#&lt;/a&gt; 赋值运算符&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210111626143.png&#34;
+                      alt=&#34;image-20221011162634027&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;字符串扩展&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串扩展&#34;&gt;#&lt;/a&gt; 字符串扩展&lt;/h3&gt;
+&lt;h4 id=&#34;字符串的三种定义方式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串的三种定义方式&#34;&gt;#&lt;/a&gt; 字符串的三种定义方式&lt;/h4&gt;
+&lt;p&gt;单引号定义法&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Python&#34;&gt;&lt;figure class=&#34;iseeu highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;name = &lt;span class=&#34;string&#34;&gt;&amp;#x27;hello world&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;双引号定义法&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Python&#34;&gt;&lt;figure class=&#34;iseeu highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;name = &lt;span class=&#34;string&#34;&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;三引号定义法&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Python&#34;&gt;&lt;figure class=&#34;iseeu highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;name = &lt;span class=&#34;string&#34;&gt;&amp;quot;&amp;quot;&amp;quot;hello world&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;三引号定义法，和多行注释写法一样，同样支持换行操作&lt;/p&gt;
+&lt;p&gt;使用变量接受他，他就是字符串&lt;/p&gt;
+&lt;p&gt;不使用变量接收他，就可以作为多行注释使用&lt;/p&gt;
+&lt;p&gt;引号的嵌套：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以使用 &lt;code&gt;\&lt;/code&gt;  来进行转义&lt;/li&gt;
+&lt;li&gt;单引号内可以使用双引号或双引号内可以写单引号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;字符串拼接&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串拼接&#34;&gt;#&lt;/a&gt; 字符串拼接&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;使用两个字符串字面量、两个字符串变量之间的拼接 使用  &lt;code&gt;+&lt;/code&gt;  号
+&lt;ul&gt;
+&lt;li&gt;无法和非字符串拼接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;字符串格式化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串格式化&#34;&gt;#&lt;/a&gt; 字符串格式化&lt;/h4&gt;
+&lt;p&gt;使用 &lt;code&gt;%s&lt;/code&gt;  的方式完成占位，实现字符串的拼接&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;% 表示 占位&lt;/li&gt;
+&lt;li&gt;s 表示将变量变成字符串放入占位的地方&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数字精度控制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数字精度控制&#34;&gt;#&lt;/a&gt; 数字精度控制&lt;/h4&gt;
+&lt;p&gt;可以使用辅助符号 &amp;quot;m.n&amp;quot; 来控制数据的宽度和精度&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;m ， 控制宽度，要求是数字，设置的宽度小于数字自身，不生效
+&lt;ul&gt;
+&lt;li&gt;小数点和小数部分也算入宽度计算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;.n ， 控制小数点精度，要求是数字，会进行小数的四舍五入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;快速写法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#快速写法&#34;&gt;#&lt;/a&gt; 快速写法&lt;/h4&gt;
+&lt;p&gt;通过语法  &lt;code&gt;f&amp;quot;内容{变量}&amp;quot;&lt;/code&gt;  的格式来快速格式化&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Python&#34;&gt;&lt;figure class=&#34;iseeu highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;f&amp;quot;hello &lt;span class=&#34;subst&#34;&gt;&amp;#123;&lt;span class=&#34;built_in&#34;&gt;str&lt;/span&gt;&amp;#125;&lt;/span&gt;&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h3 id=&#34;数据输入&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据输入&#34;&gt;#&lt;/a&gt; 数据输入&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;input()&lt;/code&gt;  语句的功能是，获取键盘输入的数据&lt;/p&gt;
+&lt;p&gt;可以使用 &lt;code&gt;input(提示信息)&lt;/code&gt; ，用以在使用者输入内容之前显示提示内容&lt;/p&gt;
+&lt;p&gt;要注意，无论键盘输入什么类型的数据，获取到的数据永远都是字符串类型&lt;/p&gt;
+&lt;h2 id=&#34;判断语句&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#判断语句&#34;&gt;#&lt;/a&gt; 判断语句&lt;/h2&gt;
+&lt;h3 id=&#34;布尔类型和比较运算符&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#布尔类型和比较运算符&#34;&gt;#&lt;/a&gt; 布尔类型和比较运算符&lt;/h3&gt;
+&lt;p&gt;在 python 中可以表示真假的数据类型是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;布尔类型，字面量 &lt;code&gt;True&lt;/code&gt;  表示真，字面量 &lt;code&gt;Flase&lt;/code&gt;  表示假&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了布尔类型外，还可以通过比较运算得到布尔类型&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210111921177.png&#34;
+                      alt=&#34;image-20221011192159062&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;if语句的基本格式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#if语句的基本格式&#34;&gt;#&lt;/a&gt; if 语句的基本格式&lt;/h3&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Python&#34;&gt;&lt;figure class=&#34;iseeu highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;try&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    num = &lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt;(&lt;span class=&#34;built_in&#34;&gt;input&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;请输入一个数字\n&amp;quot;&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; num &amp;gt; &lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;大于10&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;elif&lt;/span&gt; num == &lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;刚好10&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;小于10&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;except&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;必须为数字&amp;quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h3 id=&#34;while循环&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#while循环&#34;&gt;#&lt;/a&gt; while 循环&lt;/h3&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210112007156.png&#34;
+                      alt=&#34;image-20221011200746081&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;for循环&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#for循环&#34;&gt;#&lt;/a&gt; for 循环&lt;/h3&gt;
+&lt;h4 id=&#34;遍历字符串&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遍历字符串&#34;&gt;#&lt;/a&gt; 遍历字符串&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210112057435.png&#34;
+                      alt=&#34;image-20221011205711371&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;range语句&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#range语句&#34;&gt;#&lt;/a&gt; range 语句&lt;/h4&gt;
+&lt;p&gt;range 用来获取一个简单的数字序列&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;语法 1
+&lt;ul&gt;
+&lt;li&gt;range(num)&lt;/li&gt;
+&lt;li&gt;获取一个从 0 开始，到 num 结束的数字序列（不含 num 本身）&lt;/li&gt;
+&lt;li&gt;如 range (5) 取得的数据是: [0, 1 ,2 , 3, 4]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;语法 2
+&lt;ul&gt;
+&lt;li&gt;range(num1, num2)&lt;/li&gt;
+&lt;li&gt;获得一个从 num1 开始，到 num2 结束的数字序列（不含 num2 本身）&lt;/li&gt;
+&lt;li&gt;如 range (5, 10) 取得的数据是： [5, 6, 7, 8, 9]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;语法 3
+&lt;ul&gt;
+&lt;li&gt;range(num1, num2, step)&lt;/li&gt;
+&lt;li&gt;获得一个从 num1 开始，到 num2 结束的数字序列（不含 num2 本身）&lt;/li&gt;
+&lt;li&gt;数字之间的步长，以 step 为基准（step 默认为 1）&lt;/li&gt;
+&lt;li&gt;如 range (5, 10, 2) 取得的数据是: [5, 7, 9]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#函数&#34;&gt;#&lt;/a&gt; 函数&lt;/h2&gt;
+&lt;h4 id=&#34;函数的概念&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#函数的概念&#34;&gt;#&lt;/a&gt; 函数的概念&lt;/h4&gt;
+&lt;p&gt;函数： 是组织好的、可重复使用的，用来实现特定功能的代码段&lt;/p&gt;
+&lt;p&gt;好处：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将功能封装在函数中，可供随时随地的重复使用&lt;/li&gt;
+&lt;li&gt;提高代码的复用性，减少重复代码，提高开发效率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210112214421.png&#34;
+                      alt=&#34;image-20221011221401358&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;函数的传入参数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#函数的传入参数&#34;&gt;#&lt;/a&gt; 函数的传入参数&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210112221602.png&#34;
+                      alt=&#34;image-20221011222111504&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;none类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#none类型&#34;&gt;#&lt;/a&gt; None 类型&lt;/h4&gt;
+&lt;p&gt;None 是类型 &lt;code&gt;NoneType&lt;/code&gt;  的字面量，用于表示：空的、无意义的&lt;/p&gt;
+&lt;p&gt;不使用 return 语句即返回 None&lt;/p&gt;
+&lt;p&gt;主动 return None&lt;/p&gt;
+&lt;p&gt;使用场景&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数返回值&lt;/li&gt;
+&lt;li&gt;if 判断&lt;/li&gt;
+&lt;li&gt;变量定义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;变量在函数中的作用域&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#变量在函数中的作用域&#34;&gt;#&lt;/a&gt; 变量在函数中的作用域&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210112254761.png&#34;
+                      alt=&#34;image-20221011225427693&#34;
+                &gt;&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Python&#34;&gt;&lt;figure class=&#34;iseeu highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;num = &lt;span class=&#34;number&#34;&gt;400&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;test_a&lt;/span&gt;():&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(num)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;test_b&lt;/span&gt;():&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;global&lt;/span&gt; num&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    num = &lt;span class=&#34;number&#34;&gt;500&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(num)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;test_a()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;test_b()&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;print&lt;/span&gt;(num)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;h2 id=&#34;数据容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据容器&#34;&gt;#&lt;/a&gt; 数据容器&lt;/h2&gt;
+&lt;h3 id=&#34;概念&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#概念&#34;&gt;#&lt;/a&gt; 概念&lt;/h3&gt;
+&lt;p&gt;数据容器：一种可以容纳多份数据的数据类型，容纳的每一份数据称之为 1 个元素，每一个元素可以是任意类型的数据，如字符串、数字、布尔等。&lt;/p&gt;
+&lt;p&gt;数据容器根据特点的不同，如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;是否支持重复元素&lt;/li&gt;
+&lt;li&gt;是否可以修改&lt;/li&gt;
+&lt;li&gt;是否有序，等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分为 5 类，分别是：&lt;/p&gt;
+&lt;p&gt;列表 (List)、元组 (Tuple)、字符串 (Str)、集合 (Set)、字典 (dict)&lt;/p&gt;
+&lt;h3 id=&#34;列表&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#列表&#34;&gt;#&lt;/a&gt; 列表&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;列表的定义语法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Python&#34;&gt;&lt;figure class=&#34;iseeu highlight python&#34;&gt;&lt;figcaption data-lang=&#34;python&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;元素&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; 元素&lt;span class=&#34;token number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; 元素&lt;span class=&#34;token number&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什么是元素&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据容器内的每一份数据，都称之为元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元素的类型有限制吗&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;元素的数据类型没有限制，甚至元素也可以是列表，这样就定义了嵌套列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;列表的下标索引&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#列表的下标索引&#34;&gt;#&lt;/a&gt; 列表的下标索引&lt;/h4&gt;
+&lt;p&gt;正向&lt;/p&gt;
+&lt;p&gt;反向&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121056386.png&#34;
+                      alt=&#34;image-20221012105629230&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;列表的方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#列表的方法&#34;&gt;#&lt;/a&gt; 列表的方法&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121109655.png&#34;
+                      alt=&#34;image-20221012110958532&#34;
+                &gt;&lt;/p&gt;
+&lt;h4 id=&#34;列表的特点&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#列表的特点&#34;&gt;#&lt;/a&gt; 列表的特点&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121111367.png&#34;
+                      alt=&#34;image-20221012111150309&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;元组&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#元组&#34;&gt;#&lt;/a&gt; 元组&lt;/h3&gt;
+&lt;p&gt;元组同列表一样，都是可以封装多个、不同类型的元素在内。&lt;/p&gt;
+&lt;p&gt;但最大的不同点在于，元组一旦定义完成，就不可修改&lt;/p&gt;
+&lt;h4 id=&#34;元组的相关操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#元组的相关操作&#34;&gt;#&lt;/a&gt; 元组的相关操作&lt;/h4&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121225178.png&#34;
+                      alt=&#34;image-20221012122549110&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121231496.png&#34;
+                      alt=&#34;image-20221012123101405&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;字符串-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符串-2&#34;&gt;#&lt;/a&gt; 字符串&lt;/h3&gt;
+&lt;p&gt;字符串可以看做是一个字符的容器，支持下标索引等特性&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121356277.png&#34;
+                      alt=&#34;image-20221012135626146&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;字符串的特点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只可以存储字符串&lt;/li&gt;
+&lt;li&gt;长度任意（取决于内存大小）&lt;/li&gt;
+&lt;li&gt;支持下标索引&lt;/li&gt;
+&lt;li&gt;允许重复字符串存在&lt;/li&gt;
+&lt;li&gt;不可以修改（增加或删除元素等）&lt;/li&gt;
+&lt;li&gt;支持 for 循环&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;序列&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#序列&#34;&gt;#&lt;/a&gt; 序列&lt;/h3&gt;
+&lt;p&gt;序列是指：内容连续、有序、而是用下标索引的一类数据容器&lt;/p&gt;
+&lt;p&gt;列表、元组、字符串均可以视为序列&lt;/p&gt;
+&lt;p&gt;序列支持切片，即：列表、元组、字符串均支持进行切片操作&lt;/p&gt;
+&lt;p&gt;切片：从一个序列中，取出一个子序列&lt;/p&gt;
+&lt;p&gt;语法： 序列 [起始下标：结束下标：步长]&lt;/p&gt;
+&lt;p&gt;表示从序列中，从指定位置开始，依次取出元素，到指定位置结束，得到一个新序列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;起始下标表示从何处开始，可以留空，留空视作从头开始&lt;/li&gt;
+&lt;li&gt;结束下标（不含）表示何处结束，可以留空，留空视作截取到尾部&lt;/li&gt;
+&lt;li&gt;步长表示，依次取元素的间隔
+&lt;ul&gt;
+&lt;li&gt;步长 1 表示，一个个取元素&lt;/li&gt;
+&lt;li&gt;步长 2 表示，每次跳过一个元素取&lt;/li&gt;
+&lt;li&gt;步长 N 表示，每次跳过 N-1 个元素取&lt;/li&gt;
+&lt;li&gt;步长为负数表示，反向取（注意，起始下标和结束下标也要反向标记）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;集合&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#集合&#34;&gt;#&lt;/a&gt; 集合&lt;/h3&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121448620.png&#34;
+                      alt=&#34;image-20221012144818453&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121448777.png&#34;
+                      alt=&#34;image-20221012144839711&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;字典&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字典&#34;&gt;#&lt;/a&gt; 字典&lt;/h3&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121504310.png&#34;
+                      alt=&#34;image-20221012150409214&#34;
+                &gt;&lt;/p&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121544041.png&#34;
+                      alt=&#34;image-20221012154431936&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;数据容器特点的对比&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据容器特点的对比&#34;&gt;#&lt;/a&gt; 数据容器特点的对比&lt;/h3&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121557610.png&#34;
+                      alt=&#34;image-20221012155704430&#34;
+                &gt;&lt;/p&gt;
+&lt;h3 id=&#34;容器通用功能&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#容器通用功能&#34;&gt;#&lt;/a&gt; 容器通用功能&lt;/h3&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121622353.png&#34;
+                      alt=&#34;image-20221012162202237&#34;
+                &gt;&lt;/p&gt;
+&lt;h2 id=&#34;文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#文件&#34;&gt;#&lt;/a&gt; 文件&lt;/h2&gt;
+&lt;p&gt;&lt;img  
+                     lazyload
+                     src=&#34;/images/loading.svg&#34;
+                     data-src=&#34;http://tuchuang.wenhe9.cn/img/202210121713744.png&#34;
+                      alt=&#34;image-20221012171348670&#34;
+                &gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

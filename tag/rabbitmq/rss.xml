@@ -8,6 +8,28 @@
         <pubDate>Fri, 02 Jun 2023 04:37:34 +0800</pubDate>
         <lastBuildDate>Fri, 02 Jun 2023 04:37:34 +0800</lastBuildDate>
         <category>RabbitMQ</category>
+        <category>Android</category>
+        <category>Docker</category>
+        <category>java</category>
+        <category>git</category>
+        <category>JVM</category>
+        <category>es6</category>
+        <category>Java</category>
+        <category>JWT</category>
+        <category>协程</category>
+        <category>MyBatis</category>
+        <category>Kotlin</category>
+        <category>Node.js</category>
+        <category>Python</category>
+        <category>Service Mesh</category>
+        <category>Vue</category>
+        <category>Spring Security</category>
+        <category>Spring Cloud</category>
+        <category>分布式事务</category>
+        <category>排序算法</category>
+        <category>接口幂等性</category>
+        <category>领域驱动设计</category>
+        <category>设计模式</category>
         <item>
             <guid isPermalink="true">https://wait-you.github.io/2023/06/02/RabbitMQ/</guid>
             <title>RabbitMQ</title>
