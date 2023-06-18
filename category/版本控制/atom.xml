@@ -27,6 +27,7 @@
     <category term="接口幂等性" />
     <category term="领域驱动设计" />
     <category term="设计模式" />
+    <category term="Java 最佳实践" />
     <entry>
         <id>https://wait-you.github.io/2023/06/06/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
         <title>Git常用命令</title>

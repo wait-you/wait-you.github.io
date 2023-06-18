@@ -27,6 +27,7 @@
     <category term="接口幂等性" />
     <category term="领域驱动设计" />
     <category term="设计模式" />
+    <category term="Java 最佳实践" />
     <entry>
         <id>https://wait-you.github.io/2023/06/06/ECMAScript6/</id>
         <title>ECMAScript6</title>
