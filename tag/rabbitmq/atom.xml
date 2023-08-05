@@ -28,6 +28,8 @@
     <category term="领域驱动设计" />
     <category term="设计模式" />
     <category term="Java 最佳实践" />
+    <category term="面试题" />
+    <category term="Hash" />
     <entry>
         <id>https://wait-you.github.io/2023/06/02/RabbitMQ/</id>
         <title>RabbitMQ</title>

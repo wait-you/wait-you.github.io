@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://wait-you.github.io</id>
+    <title>玖忆 • Posts by &#34;hash&#34; tag</title>
+    <link href="https://wait-you.github.io" />
+    <updated>2023-08-06T00:26:51.000Z</updated>
+    <category term="RabbitMQ" />
+    <category term="Android" />
+    <category term="Docker" />
+    <category term="java" />
+    <category term="git" />
+    <category term="JVM" />
+    <category term="es6" />
+    <category term="Java" />
+    <category term="JWT" />
+    <category term="协程" />
+    <category term="MyBatis" />
+    <category term="Kotlin" />
+    <category term="Node.js" />
+    <category term="Python" />
+    <category term="Service Mesh" />
+    <category term="Vue" />
+    <category term="Spring Security" />
+    <category term="Spring Cloud" />
+    <category term="分布式事务" />
+    <category term="排序算法" />
+    <category term="接口幂等性" />
+    <category term="领域驱动设计" />
+    <category term="设计模式" />
+    <category term="Java 最佳实践" />
+    <category term="面试题" />
+    <category term="Hash" />
+    <entry>
+        <id>https://wait-you.github.io/2023/08/06/HashSet%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</id>
+        <title>HashSet工作原理</title>
+        <link rel="alternate" href="https://wait-you.github.io/2023/08/06/HashSet%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"/>
+        <content type="html">&lt;h1 id=&#34;hashset-工作原理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hashset-工作原理&#34;&gt;#&lt;/a&gt; HashSet 工作原理&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;HashSet 是 Java 中的一种集合类，它使用哈希表（Hash Table）来存储元素。在哈希表中，元素的存储位置是根据它们的哈希码（Hash Code）来确定的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;hashCode () 方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个 Java 对象都有一个 hashCode () 方法，它返回一个 32 位的整数值，表示对象的哈希码。哈希码是根据对象的内容计算出来的，通常情况下，如果两个对象相等（通过 equals () 方法比较），那么它们的 hashCode () 方法应该返回相同的值，但反之则不一定成立（这种情况称为哈希冲突）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;哈希表&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HashSet 内部使用了一个哈希表来存储元素。哈希表实际上是一个数组，数组的每个位置被称为 “桶”（Bucket）。当你往 HashSet 中添加元素时，HashSet 会首先计算该元素的 hashCode () 方法的返回值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;计算索引&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计算出的 hashCode 值经过一定的处理（通常是取绝对值，然后对数组长度取余），得到一个在哈希表中的索引，这个索引就表示了元素在数组中的存放位置。这个索引对应的桶就是元素的存储位置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解决哈希冲突&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;由于不同的对象可能会有相同的哈希码，所以在计算得到的索引位置可能已经有其他元素存在。这种情况称为哈希冲突。为了解决冲突，HashSet 使用了一些方法，最常见的是在同一个索引位置使用链表或者更高效的红黑树来存储多个元素，从而确保同一个索引位置可以存储多个元素。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查找元素&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当你需要查找一个元素时，HashSet 会首先根据要查找元素的 hashCode 计算出索引，然后在对应的桶中查找元素。如果在链表或者红黑树中找到了对应的元素，就说明元素存在于集合中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;HashSet 利用对象的 hashCode () 方法来计算哈希码，然后通过哈希码计算出在哈希表中的索引位置，最终将元素存储在对应的桶中。这种设计使得在集合中查找、插入和删除元素的操作可以在平均情况下达到常数时间复杂度，从而实现高效的元素存储和查找&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当涉及到底层实现细节时，查看源代码是理解的一个很好的方法。下面我将用一些简化的 Java 源代码来说明 HashSet 是如何通过哈希码确定对象的位置的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Java&#34;&gt;&lt;figure class=&#34;iseeu highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;73&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;HashSet&lt;/span&gt;&amp;lt;E&amp;gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;AbstractSet&lt;/span&gt;&amp;lt;E&amp;gt; &lt;span class=&#34;keyword&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Set&lt;/span&gt;&amp;lt;E&amp;gt;, Cloneable, Serializable &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// 哈希表，用于存储元素&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;transient&lt;/span&gt; HashMap&amp;lt;E,Object&amp;gt; map;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// 虚拟的常量，用于作为哈希表中的value，因为HashSet的实现依赖于HashMap&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;PRESENT&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// 构造方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;HashSet&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        map = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;HashMap&lt;/span&gt;&amp;lt;&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// 添加元素&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;boolean&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;add&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(E e)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; map.put(e, PRESENT) == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// 内部实现类，用于存储元素的哈希表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;HashMap&lt;/span&gt;&amp;lt;K,V&amp;gt; &lt;span class=&#34;keyword&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;AbstractMap&lt;/span&gt;&amp;lt;K,V&amp;gt; &lt;span class=&#34;keyword&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Map&lt;/span&gt;&amp;lt;K,V&amp;gt;, Cloneable, Serializable &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 哈希桶数组，用于存储元素&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;transient&lt;/span&gt; Node&amp;lt;K,V&amp;gt;[] table;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 计算哈希码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;hash&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(Object key)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; key.hashCode();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; (key == &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;) ? &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; : h ^ (h &amp;gt;&amp;gt;&amp;gt; &lt;span class=&#34;number&#34;&gt;16&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 计算元素在哈希表中的索引&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;title function_&#34;&gt;indexFor&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(&lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; h, &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; length)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; h &amp;amp; (length-&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 添加元素到哈希表&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; V &lt;span class=&#34;title function_&#34;&gt;put&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;(K key, V value)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;hash&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; hash(key);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; indexFor(hash, table.length);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt; (Node&amp;lt;K,V&amp;gt; e = table[i]; e != &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;; e = e.next) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                Object k;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt; (e.hash == hash &amp;amp;&amp;amp; ((k = e.key) == key || key.equals(k))) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    &lt;span class=&#34;type&#34;&gt;V&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;oldValue&lt;/span&gt; &lt;span class=&#34;operator&#34;&gt;=&lt;/span&gt; e.value;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    e.value = value;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                    &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; oldValue;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            addEntry(hash, key, value, i);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;literal&#34;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 哈希表中的一个节点&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Node&lt;/span&gt;&amp;lt;K,V&amp;gt; &lt;span class=&#34;keyword&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Map&lt;/span&gt;.Entry&amp;lt;K,V&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; hash;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;keyword&#34;&gt;final&lt;/span&gt; K key;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            V value;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            Node&amp;lt;K,V&amp;gt; next;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            &lt;span class=&#34;comment&#34;&gt;// ...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;上述代码只是一个简化版的示例，实际的 HashSet 和 HashMap 实现要更加复杂。关键点是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;HashSet 内部实际上使用了一个 HashMap 来存储元素，HashMap 中使用了哈希桶数组来存储节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当调用 add () 方法将元素添加到 HashSet 时，实际上是通过 HashMap 的 put () 方法将元素添加到哈希表中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 put () 方法中，首先会计算元素的哈希码，然后使用哈希码计算出在哈希桶数组中的索引位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果该索引位置已经存在其他节点（可能是哈希冲突），则会遍历链表或红黑树（根据节点数量）查找合适的位置来插入元素。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;总之，HashSet 利用了 HashMap 的哈希表实现，通过计算哈希码并选择合适的索引位置来确定对象在集合中的位置。这种机制保证了高效的元素查找和存储。要深入理解更多细节，最好还是查看 Java 源代码的实现。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;源码中的 hash () 方法可能是一个疑点，他的作用及原理如下:&lt;br&gt;
+ 假设我们有一个哈希码 h，二进制表示为： &lt;code&gt;11001010101110011011100110100101&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;现在，我们进行无符号右移操作 h &amp;gt;&amp;gt;&amp;gt; 16，将低 16 位移到高位，得到： &lt;code&gt;00000000000000001100101010111001&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;接下来，我们进行异或操作 h ^ (h&amp;gt;&amp;gt;&amp;gt; 16)，对应的位进行异或操作：&lt;/p&gt;
+&lt;div class=&#34;highlight-container&#34; data-rel=&#34;Markdown&#34;&gt;&lt;figure class=&#34;iseeu highlight markdown&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;11001010101110011011100110100101&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;section&#34;&gt;00000000000000001100101010111001&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;section&#34;&gt;--------------------------------&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11001010101110010111001100011100&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/div&gt;
+&lt;p&gt;通过异或操作，我们将原始哈希码的高位和低位进行了混合。现在，如果我们将得到的结果再转化为十进制，得到： &lt;code&gt;3361659324&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;这个结果相比于原始哈希码  &lt;code&gt;2864585453&lt;/code&gt; ，已经发生了很大变化。这种混合的效果在位级别上实际上是将原始哈希码的不同部分交织在一起，增加了分布的随机性。这样的随机性有助于减少哈希冲突的发生，从而提高了哈希表的性能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总之，位运算 h ^ (h&amp;gt;&amp;gt;&amp;gt; 16) 的作用是将原始哈希码的高位和低位进行混合，生成一个在位级别上更随机的结果，从而提高哈希码的分布性&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;面试题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;为什么重写 equals（）方法，就一定要重写 hashCode（）方法？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 Java 中，当重写了 equals () 方法，目标是要在逻辑上判断两个对象是否相等，即它们的内容是否相同。然而，在涉及散列集合（如 HashSet、HashMap 等）时，不仅需要考虑逻辑上的相等，还需要确保哈希码相等的对象被放置在哈希表中同一个位置。这样才能正确地执行插入、查找、删除等操作。&lt;/p&gt;
+&lt;p&gt;如果只重写了 equals () 方法，但没有重写 hashCode () 方法，就有可能出现以下问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;不一致的哈希码： 两个对象在 equals () 方法中被判断为相等，但由于它们的 hashCode () 方法返回不同的哈希码，它们在散列集合中被当作不同的键插入。这会导致你无法正确查找或删除这些对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;无法正确覆盖： 在散列集合中，如果你希望用新的对象覆盖旧的对象（基于 equals () 判断相等），你需要确保新对象的哈希码与旧对象的哈希码相同。否则，你的新对象将被错误地放置在哈希表的另一个位置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，为了保证逻辑相等的对象在散列集合中能够被正确地处理，必须同时重写 equals () 和 hashCode () 方法。这样，可以确保相等的对象拥有相同的哈希码，从而保证它们被正确处理并存储在散列集合中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总之，重写 hashCode () 方法主要是为了保证逻辑相等的对象在散列集合中能够正确处理。如果仅在一般的逻辑判断中使用 equals () 方法，那么重写 hashCode () 并不是必需的。&lt;/strong&gt;&lt;/p&gt;
+</content>
+        <category term="面试题" />
+        <category term="Hash" />
+        <updated>2023-08-06T00:26:51.000Z</updated>
+    </entry>
+</feed>
