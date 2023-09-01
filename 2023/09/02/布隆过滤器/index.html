@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="玖忆;文鹤;博客">
+    
+    <meta name="author" content="meteor">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://wait-you.github.io/2023/09/02/布隆过滤器/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="# 布隆过滤器 # 概念 一个很长的二进制向量，一个二进制数组，由 0 和 1 组成，主要作用是判断一个数据存不存在这个于这个数组中，如果不存在就是 0，如果存在的话就是 1，使用 0 和 1 的二进制存储来表示存在的关系。  # 原理  # 存入过程 经过 hash 算法对数据进行计算，然后对数组长度进行取模，进而得到他在数组中的位置，然后将该位置的值设置成 1 # 查询过程 经过多个 hash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="布隆过滤器">
+<meta property="og:url" content="https://wait-you.github.io/2023/09/02/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/index.html">
+<meta property="og:site_name" content="玖忆">
+<meta property="og:description" content="# 布隆过滤器 # 概念 一个很长的二进制向量，一个二进制数组，由 0 和 1 组成，主要作用是判断一个数据存不存在这个于这个数组中，如果不存在就是 0，如果存在的话就是 1，使用 0 和 1 的二进制存储来表示存在的关系。  # 原理  # 存入过程 经过 hash 算法对数据进行计算，然后对数组长度进行取模，进而得到他在数组中的位置，然后将该位置的值设置成 1 # 查询过程 经过多个 hash">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tuchuang.wenhe9.cn/img/202309011047204.png">
+<meta property="og:image" content="http://tuchuang.wenhe9.cn/img/202309011049425.png">
+<meta property="article:published_time" content="2023-09-01T18:14:35.000Z">
+<meta property="article:modified_time" content="2023-09-01T03:12:37.437Z">
+<meta property="article:author" content="meteor">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tuchuang.wenhe9.cn/img/202309011047204.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/wenhe.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/wenhe.png">
+    <meta name="theme-color" content="#f1404b">
+    <link rel="shortcut icon" href="/images/wenhe.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            布隆过滤器 -
+        
+        玖忆
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"wait-you.github.io","root":"/","language":"zh-CN"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"http://tuchuang.wenhe9.cn/default-bg.jpg","skip_dirs":[]}},"colors":{"primary":"#f1404b","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"static","image":{"light":"http://tuchuang.wenhe9.cn/default-bg.jpg","dark":"http://tuchuang.wenhe9.cn/default-bg.jpg"},"title":"玖忆","subtitle":{"text":["我本微末凡尘、可也心向天空"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://gitee.com/du-jinliang","instagram":null,"zhihu":null,"twitter":null,"email":"dujinliang9@163.com"}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.4","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    Global.data_config = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                玖忆
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">布隆过滤器</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/wenhe.png">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">meteor</span>
+                            
+                                <span class="author-label">Lv3</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-09-01 10:14:35</span>
+        <span class="mobile">2023-09-01 10:14</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-08-31 19:12:37</span>
+            <span class="mobile">2023-08-31 19:12</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/redis/">redis</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="布隆过滤器"><a class="markdownIt-Anchor" href="#布隆过滤器">#</a> 布隆过滤器</h1>
+<h2 id="概念"><a class="markdownIt-Anchor" href="#概念">#</a> 概念</h2>
+<p>一个很长的二进制向量，一个二进制数组，由 0 和 1 组成，主要作用是判断一个数据存不存在这个于这个数组中，如果不存在就是 0，如果存在的话就是 1，使用 0 和 1 的二进制存储来表示存在的关系。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://tuchuang.wenhe9.cn/img/202309011047204.png"
+                      alt="image-20230901104721073"
+                ></p>
+<h2 id="原理"><a class="markdownIt-Anchor" href="#原理">#</a> 原理</h2>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://tuchuang.wenhe9.cn/img/202309011049425.png"
+                      alt="image-20230901104936302"
+                ></p>
+<h3 id="存入过程"><a class="markdownIt-Anchor" href="#存入过程">#</a> 存入过程</h3>
+<p>经过 hash 算法对数据进行计算，然后对数组长度进行取模，进而得到他在数组中的位置，然后将该位置的值设置成 1</p>
+<h3 id="查询过程"><a class="markdownIt-Anchor" href="#查询过程">#</a> 查询过程</h3>
+<p>经过多个 hash 算法计算取模后，所有位置的值都是 1 就是表示这个数据存在，否则就表示这个数据不存在</p>
+<ul>
+<li>多个 hash 函数</li>
+<li>二进制数据必须都是 1</li>
+</ul>
+<h3 id="删除数据"><a class="markdownIt-Anchor" href="#删除数据">#</a> 删除数据</h3>
+<p>很难实现删除</p>
+<p>可能会出现多个数据计算出的 hash 取模后的下标位置是同一个位置，即这个位置可能存在多个数据，那么当删除其中一个数据时，可能会导致另一个数据也会被误删。</p>
+<h2 id="优点-缺点"><a class="markdownIt-Anchor" href="#优点-缺点">#</a> 优点、缺点</h2>
+<h3 id="优点"><a class="markdownIt-Anchor" href="#优点">#</a> 优点</h3>
+<ul>
+<li>是由一串二进制数组组成，所以占用空间非常小</li>
+<li>插入和查询是很快的，因为他是计算数据的 hash 值，然后再由 hash 值映射到数组的下标，基于数组的特性，他的查询和插入时很快的，所以他的时间复杂度是 o (k)，k 表示 hash 函数的个数</li>
+<li>保密性好，存储的都是二进制数据，本身也不存储原始数据，无法得知 0、1 的意义是什么</li>
+</ul>
+<h3 id="缺点"><a class="markdownIt-Anchor" href="#缺点">#</a> 缺点</h3>
+<ul>
+<li>很难实现删除操作</li>
+<li>存在误判这个数据本身不存在数组中，但是经过一系列计算后，判断这个数据存在于数组中，hash 冲突，解决办法是减小误判率，但是不能过小，因为减小误判率是通过增加 hash 函数实现的，当增加 hash 函数时，除了会增加计算时间外，因为会出现多个 hash 结果，他映射到数组中的位置也会增多，空间占用也会增加。为 1 不一定存在，但是为 0 一定不存在。</li>
+</ul>
+<h2 id="解决缓存穿透"><a class="markdownIt-Anchor" href="#解决缓存穿透">#</a> 解决缓存穿透</h2>
+<p>当大量数据访问一个不存在于缓存中的数据，导致请求直接访问后端存储（如数据库），并且由于数据不存在，这个请求在缓存和后端存储中都没有命中，从而导致大量的请求流向后端存储，增加了系统的负载和响应时间。</p>
+<p>主要原因是恶意用户或者系统错误导致大量查询缓存中不存在的数据，这样的请求会绕过缓存，直接访问后端存储，导致后端存储的压力增大。</p>
+<p>为了应对缓存穿透问题，可以考虑以下方法：</p>
+<ol>
+<li><strong>缓存空值：</strong> 即使数据不存在，也在缓存中存储一个特殊值，表示这个数据不存在。这样，在下一次请求同样的数据时，就可以从缓存中快速判断数据不存在，而不会再次访问后端存储。</li>
+<li><strong>使用布隆过滤器：</strong> 布隆过滤器可以用来快速判断某个数据是否存在于缓存中。如果布隆过滤器判断数据不存在，就可以避免绕过缓存直接访问后端存储。</li>
+<li><strong>热点数据预加载：</strong> 针对系统中的热点数据，可以在系统启动时提前加载到缓存中，避免由于查询热点数据时导致缓存穿透。</li>
+<li><strong>限制请求频率：</strong> 可以在缓存层面限制同一个请求的频率，避免大量的恶意请求绕过缓存直接访问后端存储。</li>
+<li><strong>使用缓存云平台：</strong> 一些缓存云平台（如 AWS Elasticache、Redis Labs 等）提供了针对缓存穿透的解决方案，可以自动处理缓存穿透问题。</li>
+</ol>
+<h2 id="代码示例"><a class="markdownIt-Anchor" href="#代码示例">#</a> 代码示例</h2>
+<p>这里的示例以我的用户是否浏览过记忆为例：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserViewedMemoryBloomFilterUtil</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> RedisTemplate&lt;String, Object&gt; redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">BLOOM_FILTER_KEY_PREFIX</span> <span class="operator">=</span> <span class="string">&quot;memory_bloom_filter:&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">EXPECTED_INSERTIONS</span> <span class="operator">=</span> <span class="number">100000</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">FPP</span> <span class="operator">=</span> <span class="number">0.03</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断某个用户是否浏览过某个记忆</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userId   用户ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> memoryId 记忆ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true表示用户已经浏览过，false表示用户未浏览过</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasViewedMemory</span><span class="params">(String userId, String memoryId)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">bloomFilterKey</span> <span class="operator">=</span> BLOOM_FILTER_KEY_PREFIX + userId;</span><br><span class="line">        <span class="type">long</span>[] offsets = bloomFilterOffsets(memoryId);</span><br><span class="line"></span><br><span class="line">        <span class="type">byte</span>[] bloomFilterBytes = (<span class="type">byte</span>[]) redisTemplate.opsForValue().get(bloomFilterKey);</span><br><span class="line">        <span class="keyword">if</span> (bloomFilterBytes == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 布隆过滤器为空，则用户一定未浏览过该记忆</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断该记忆是否在布隆过滤器中</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">long</span> offset : offsets) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!getBit(bloomFilterBytes, offset)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将某个记忆标记为已浏览过</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userId   用户ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> memoryId 记忆ID</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">markMemoryAsViewed</span><span class="params">(String userId, String memoryId)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">bloomFilterKey</span> <span class="operator">=</span> BLOOM_FILTER_KEY_PREFIX + userId;</span><br><span class="line">        <span class="type">long</span>[] offsets = bloomFilterOffsets(memoryId);</span><br><span class="line"></span><br><span class="line">        <span class="type">byte</span>[] bloomFilterBytes = (<span class="type">byte</span>[]) redisTemplate.opsForValue().get(bloomFilterKey);</span><br><span class="line">        <span class="keyword">if</span> (bloomFilterBytes == <span class="literal">null</span>) &#123;</span><br><span class="line">            bloomFilterBytes = <span class="keyword">new</span> <span class="title class_">byte</span>[getBloomFilterSize(EXPECTED_INSERTIONS, FPP)];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将该记忆对应的位设置为1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">long</span> offset : offsets) &#123;</span><br><span class="line">            setBit(bloomFilterBytes, offset);</span><br><span class="line">        &#125;</span><br><span class="line">        redisTemplate.opsForValue().set(bloomFilterKey, bloomFilterBytes);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取某个记忆在布隆过滤器中对应的位</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> memoryId 记忆ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 位的数组</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">long</span>[] bloomFilterOffsets(String memoryId) &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">hash1</span> <span class="operator">=</span> MurmurHash.hash64(memoryId.getBytes(StandardCharsets.UTF_8), <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="type">long</span> <span class="variable">hash2</span> <span class="operator">=</span> MurmurHash.hash64(memoryId.getBytes(StandardCharsets.UTF_8), (<span class="type">int</span>) hash1, <span class="number">0</span>);</span><br><span class="line">        <span class="type">long</span>[] offsets = <span class="keyword">new</span> <span class="title class_">long</span>[<span class="number">2</span>];</span><br><span class="line">        offsets[<span class="number">0</span>] = Math.abs(hash1 % getBloomFilterSize(EXPECTED_INSERTIONS, FPP));</span><br><span class="line">        offsets[<span class="number">1</span>] = Math.abs(hash2 % getBloomFilterSize(EXPECTED_INSERTIONS, FPP));</span><br><span class="line">        <span class="keyword">return</span> offsets;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取布隆过滤器的大小</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> expectedInsertions 预期插入数量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fpp                期望的误判率</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 布隆过滤器的大小</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getBloomFilterSize</span><span class="params">(<span class="type">double</span> expectedInsertions, <span class="type">double</span> fpp)</span> &#123;</span><br><span class="line">        <span class="comment">// 根据预期插入数量和误判率计算布隆过滤器的大小</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> (<span class="type">int</span>) Math.ceil((-expectedInsertions * Math.log(fpp)) / (Math.log(<span class="number">2</span>) * Math.log(<span class="number">2</span>)));</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取指定位置的位的值</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bytes  字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> offset 位的位置</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 位的值，true 表示 1，false 表示 0</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">getBit</span><span class="params">(<span class="type">byte</span>[] bytes, <span class="type">long</span> offset)</span> &#123;</span><br><span class="line">        <span class="comment">// 因为一个 byte 等于 8 个 bit</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> (<span class="type">int</span>) (offset / <span class="number">8</span>);</span><br><span class="line">        <span class="comment">// 得到在一个字节中的下标位置</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">bitPos</span> <span class="operator">=</span> (<span class="type">int</span>) (offset % <span class="number">8</span>);</span><br><span class="line">        <span class="comment">// 位运算，偏移 bitPos 下标位置的向量</span></span><br><span class="line">        <span class="type">byte</span> <span class="variable">mask</span> <span class="operator">=</span> (<span class="type">byte</span>) (<span class="number">1</span> &lt;&lt; bitPos);</span><br><span class="line">        <span class="comment">// 和数组中的对应位置的字节中的8位bit进行与运算，当该位置存在时即不等于0</span></span><br><span class="line">        <span class="keyword">return</span> (bytes[index] &amp; mask) != <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将指定位置的位设置为 1</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bytes  字节数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> offset 位的位置</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">setBit</span><span class="params">(<span class="type">byte</span>[] bytes, <span class="type">long</span> offset)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> (<span class="type">int</span>) (offset / <span class="number">8</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">bitPos</span> <span class="operator">=</span> (<span class="type">int</span>) (offset % <span class="number">8</span>);</span><br><span class="line">        <span class="type">byte</span> <span class="variable">mask</span> <span class="operator">=</span> (<span class="type">byte</span>) (<span class="number">1</span> &lt;&lt; bitPos);</span><br><span class="line">        <span class="comment">// 或运算，只有该位置不存在时才将该位置设置成1</span></span><br><span class="line">        bytes[index] |= mask;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 布隆过滤器</li>
+        <li><strong>作者:</strong> meteor</li>
+        <li><strong>创建于:</strong> 2023-09-01 10:14:35</li>
+        
+            <li>
+                <strong>更新于:</strong> 2023-08-31 19:12:37
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://gitee.com/du-jinliang/2023/09/02/布隆过滤器/
+        </li>
+        <li>
+            <strong>版权声明:</strong> 本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">#面试题</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/redis/">#redis</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/08/06/HashSet%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">HashSet工作原理</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;评论
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '55bad54a77b7e60ad62d',
+                    clientSecret: '1031c81500c6be06e338087cb7b713f2d0201b46',
+                    repo: 'wait-you.github.io',
+                    owner: 'wait-you',
+                    admin: ['wait-you'],
+                    id: 'comment',
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">布隆过滤器</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-text"> 布隆过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-text"> 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-text"> 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="nav-text"> 存入过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B"><span class="nav-text"> 查询过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="nav-text"> 删除数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E7%82%B9-%E7%BC%BA%E7%82%B9"><span class="nav-text"> 优点、缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-text"> 优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-text"> 缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="nav-text"> 解决缓存穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-text"> 代码示例</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+            
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">meteor</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br>
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.4</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="
+                
+                    beian.miit.gov.cn
+                
+                ">冀ICP备20010108号</a></div>
+        
+        
+        
+            <div id="start_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

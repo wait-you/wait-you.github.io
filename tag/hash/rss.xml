@@ -33,6 +33,7 @@
         <category>Java 最佳实践</category>
         <category>面试题</category>
         <category>Hash</category>
+        <category>redis</category>
         <item>
             <guid isPermalink="true">https://wait-you.github.io/2023/08/06/HashSet%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</guid>
             <title>HashSet工作原理</title>

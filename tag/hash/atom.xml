@@ -30,6 +30,7 @@
     <category term="Java 最佳实践" />
     <category term="面试题" />
     <category term="Hash" />
+    <category term="redis" />
     <entry>
         <id>https://wait-you.github.io/2023/08/06/HashSet%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</id>
         <title>HashSet工作原理</title>
