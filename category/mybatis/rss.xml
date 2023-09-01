@@ -34,6 +34,7 @@
         <category>面试题</category>
         <category>Hash</category>
         <category>redis</category>
+        <category>mysql</category>
         <item>
             <guid isPermalink="true">https://wait-you.github.io/2023/06/06/Mybatis%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%95%88%E7%8E%87%E5%AF%B9%E6%AF%94/</guid>
             <title>Mybatis批量插入数据的三种方式效率对比</title>

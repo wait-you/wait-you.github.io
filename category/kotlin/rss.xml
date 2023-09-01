@@ -34,6 +34,7 @@
         <category>面试题</category>
         <category>Hash</category>
         <category>redis</category>
+        <category>mysql</category>
         <item>
             <guid isPermalink="true">https://wait-you.github.io/2023/06/06/Kotlin%E5%8D%8F%E7%A8%8B/</guid>
             <title>Kotlin协程</title>

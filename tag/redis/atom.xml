@@ -31,6 +31,7 @@
     <category term="面试题" />
     <category term="Hash" />
     <category term="redis" />
+    <category term="mysql" />
     <entry>
         <id>https://wait-you.github.io/2023/09/02/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/</id>
         <title>布隆过滤器</title>

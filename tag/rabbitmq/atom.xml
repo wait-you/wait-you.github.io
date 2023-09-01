@@ -31,6 +31,7 @@
     <category term="面试题" />
     <category term="Hash" />
     <category term="redis" />
+    <category term="mysql" />
     <entry>
         <id>https://wait-you.github.io/2023/06/02/RabbitMQ/</id>
         <title>RabbitMQ</title>
