@@ -72,6 +72,11 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;规则&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#规则&#34;&gt;#&lt;/a&gt; 规则&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;一个事务只能看到第一次查询之前已经提交的事务以及当前事务的修改&lt;/li&gt;
+&lt;li&gt;一个事务不能看到当前事务第一次查询之后创建的事务，以及未提交的事务的修改&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;读提交-rc&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#读提交-rc&#34;&gt;#&lt;/a&gt; 读提交 RC&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;如下图所示，当事务的隔离级别位读提交时，每次查询数据时都会产生一个 read view&lt;/li&gt;
@@ -109,7 +114,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;当进行当前读的时候，会根据条件加 临键锁 (Next-Key Lock) ，当要操作的数据在临键锁的范围覆盖了其他事务的数据，那么将再次生成新的 read view 这时，可能会出现不可重复读的问题，如果要操作的数据不在临键锁的范围内，那么将复用一开始的 read view，则不会出现幻读。&lt;/p&gt;
-&lt;p&gt;综上，&lt;strong&gt;在 RR 隔离级别下，快照读完全解决了幻读，当前读部分解决了幻读&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;综上，&lt;strong&gt;在 RR 隔离级别下，快照读完全解决了幻读，当前读部分解决了幻读&lt;/strong&gt;，因为当前读不是读的快照，而是直接读取的内存&lt;/p&gt;
 &lt;p&gt;&lt;img  
                      lazyload
                      src=&#34;/images/loading.svg&#34;
